@@ -1,4 +1,4 @@
-﻿
+﻿using System.IO;
 
 namespace Retro_Racer
 {
@@ -6,12 +6,45 @@ namespace Retro_Racer
     {
         static void Main(string[] args) // 128x128 = 16384 total entries
         {
-            Console.Clear();
-            Console.SetWindowSize(101, 51);
-            var trackHandlerC = new trackHandler(trackReference.track1, Console.WindowHeight, Console.WindowWidth);
-            trackHandlerC.drawTrackSection(0, 0);
-            return;
+            var counter = 0;
+            var lines = File.ReadAllText("input.txt").Split(' ');
+            StreamWriter sw = new StreamWriter("output.txt");
 
+
+
+            sw.Write("{");
+
+            for (int i = 0; i < lines.Length; i++)
+            {
+                if (counter == 0) sw.Write("{");
+                sw.Write(lines[i]);
+                if (counter == 263) { sw.Write("},"); sw.WriteLine(); }
+                counter++;
+                if (counter == 264) counter = 0;
+
+            }
+            sw.Write("}");
+            sw.Close();
+
+
+
+
+
+            // Console.Clear();
+            // Console.SetWindowSize(151, 51); // Middle 76, 25
+            // Console.SetBufferSize(151, 51);
+            // var middle = (76, 25);
+            // var trackHandlerC = new trackHandler(trackReference.track1, Console.BufferHeight, Console.BufferWidth);
+            // trackHandlerC.drawTrackSection(, 0);
+            // var counter = 1;
+            // var previousCounter = 0;
+            // while (true)
+            // {
+            //     if (Console.ReadKey().Key == ConsoleKey.Enter) { counter++; previousCounter++; }
+            //     if (counter > 16) counter = 1;
+            //     if (previousCounter > 16) previousCounter = 1;
+            //     RacerSprites.showSprite(middle.Item1 + 3, middle.Item2 + 3, counter, previousCounter);
+            // }
         }
     }
     class trackHandler
@@ -67,5 +100,42 @@ namespace Retro_Racer
             Console.BackgroundColor = ConsoleColor.Black;
 
         }
+    }
+
+    class Racer
+    {
+        private int _x;
+        private int _y;
+        private int _speed;
+        private int _direction;
+        private int _maxSpeed { get; set; }
+        private int _acceleration;
+
+
+        public Racer(int startX, int startY)
+        {
+            _x = startX;
+            _y = startY;
+            _speed = 0;
+            _direction = 0;
+            _maxSpeed = 10;
+            _acceleration = 0;
+
+        }
+
+        public void accelerate()
+        {
+            if (_speed < _maxSpeed) _speed++;
+        }
+        public int X
+        {
+            get { return _x; }
+        }
+        public int Y
+        {
+            get { return _y; }
+        }
+
+
     }
 }
