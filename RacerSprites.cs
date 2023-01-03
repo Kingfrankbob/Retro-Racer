@@ -90,7 +90,7 @@ namespace Retro_Racer
      {0, 0, 1, 0, 0, 0, 0}};
 
 
-        public static void showSprite(int x, int y, int spriteNumber, int prevNumber)
+        public static void showSprite(int x, int y, int spriteNumber)
         {
             var one = carUD; // Start UpDown
             var two = car25LDRUB45;
@@ -111,6 +111,11 @@ namespace Retro_Racer
 
             var current = new int[,] { };
             var previous = new int[,] { };
+
+            int prevNumber = 0;
+
+            if (spriteNumber != 1) prevNumber = spriteNumber - 1;
+            else prevNumber = 16;
 
             //Maybe make these smaller somehow using lambdas?
 
@@ -224,23 +229,27 @@ namespace Retro_Racer
                 {
                     Console.SetCursorPosition(x + j, y + i);
                     if (i == 3 && j == 3)
+                    {
+                        Console.BackgroundColor = ConsoleColor.Red;
                         Console.Write("X");
+                    }
                     else
                     {
 
                         if (current[i, j] == 1)
                         {
-                            if (!(previous[i, j] == 1))
-                                Console.Write("X");
+                            Console.BackgroundColor = ConsoleColor.Red;
+                            Console.Write(" ");
                         }
-                        else System.Console.Write(' ');
+                        else
+                        {
+                            Console.BackgroundColor = ConsoleColor.DarkBlue;
+                            System.Console.Write(' ');
+                        }
                     }
                 }
 
             }
-
-            System.Console.WriteLine(spriteNumber + " ");
-
 
         }
     }

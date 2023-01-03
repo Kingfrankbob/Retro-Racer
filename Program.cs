@@ -6,45 +6,52 @@ namespace Retro_Racer
     {
         static void Main(string[] args) // 128x128 = 16384 total entries
         {
-            var counter = 0;
-            var lines = File.ReadAllText("input.txt").Split(' ');
-            StreamWriter sw = new StreamWriter("output.txt");
-
-
-
-            sw.Write("{");
-
-            for (int i = 0; i < lines.Length; i++)
-            {
-                if (counter == 0) sw.Write("{");
-                sw.Write(lines[i]);
-                if (counter == 263) { sw.Write("},"); sw.WriteLine(); }
-                counter++;
-                if (counter == 264) counter = 0;
-
-            }
-            sw.Write("}");
-            sw.Close();
-
-
-
-
-
-            // Console.Clear();
-            // Console.SetWindowSize(151, 51); // Middle 76, 25
-            // Console.SetBufferSize(151, 51);
+            Console.Clear();
+            Console.SetWindowSize(151, 51); // Middle 76, 25
+            Console.SetBufferSize(151, 51);
             // var middle = (76, 25);
-            // var trackHandlerC = new trackHandler(trackReference.track1, Console.BufferHeight, Console.BufferWidth);
-            // trackHandlerC.drawTrackSection(, 0);
+
+            var trackHandlerC = new trackHandler(trackReference.track1, Console.BufferHeight, Console.BufferWidth);
+            var curRacer = new Racer(76, 25);
+
+            // trackHandlerC.drawTrackSection(middle.Item1 - 76, middle.Item2 - 25);
+
             // var counter = 1;
             // var previousCounter = 0;
-            // while (true)
-            // {
-            //     if (Console.ReadKey().Key == ConsoleKey.Enter) { counter++; previousCounter++; }
-            //     if (counter > 16) counter = 1;
-            //     if (previousCounter > 16) previousCounter = 1;
-            //     RacerSprites.showSprite(middle.Item1 + 3, middle.Item2 + 3, counter, previousCounter);
-            // }
+            // var spriteCounter = 0;
+
+            while (true)
+            {
+                if (Console.KeyAvailable)
+                {
+                    switch (Console.ReadKey().Key)
+                    {
+                        case ConsoleKey.UpArrow:
+                            curRacer.accelerate();
+                            break;
+                        case ConsoleKey.DownArrow:
+                            curRacer.brake();
+                            break;
+                        case ConsoleKey.LeftArrow:
+                            curRacer.turnLeft();
+                            break;
+                        case ConsoleKey.RightArrow:
+                            curRacer.turnRight();
+                            break;
+
+                    }
+                }
+
+                Console.SetCursorPosition(0, 0);
+                Console.BackgroundColor = ConsoleColor.Black;
+                System.Console.Write(curRacer.X + " " + curRacer.Y + " " + curRacer.Direction + " " + curRacer.Speed + "         ");
+
+
+
+
+                curRacer.iterateCar();
+                // RacerSprites.showSprite(middle.Item1 + 3, middle.Item2 + 3, counter, previousCounter);
+            }
         }
     }
     class trackHandler
@@ -104,12 +111,12 @@ namespace Retro_Racer
 
     class Racer
     {
-        private int _x;
-        private int _y;
-        private int _speed;
+        private double _x;
+        private double _y;
+        private double _speed;
         private int _direction;
         private int _maxSpeed { get; set; }
-        private int _acceleration;
+        private double _acceleration;
 
 
         public Racer(int startX, int startY)
@@ -117,9 +124,9 @@ namespace Retro_Racer
             _x = startX;
             _y = startY;
             _speed = 0;
-            _direction = 0;
+            _direction = 1;
             _maxSpeed = 10;
-            _acceleration = 0;
+            _acceleration = 0.03;
 
         }
 
@@ -127,15 +134,96 @@ namespace Retro_Racer
         {
             if (_speed < _maxSpeed) _speed++;
         }
-        public int X
+        public void turnLeft()
+        {
+            if (_direction == 1) _direction = 16;
+            else _direction--;
+        }
+        public void turnRight()
+        {
+            if (_direction == 16) _direction = 1;
+            else _direction++;
+        }
+        public void brake()
+        {
+            if (_speed > (_maxSpeed * -1)) _speed--;
+        }
+        public void draw()
+        {
+            RacerSprites.showSprite((int)_x, (int)_y, _direction);
+        }
+        public double X
         {
             get { return _x; }
         }
-        public int Y
+        public double Y
         {
             get { return _y; }
         }
+        public double Speed
+        {
+            get { return _speed; }
+        }
+        public int Direction
+        {
+            get { return _direction; }
+        }
+        public void iterateCar()
+        {
 
+            var dir = _direction;
+            switch (_direction)
+            {
+                case 1:
+                    _y += (_speed * Math.Cos(_direction * (Math.PI / 8)));
+                    break;
+                case 2:
+                    _y += ((_speed * Math.Cos(_direction * (Math.PI / 8))) * 0.75);
+                    _x += ((_speed * Math.Sin(_direction * (Math.PI / 8))) * 0.25);
+                    break;
+                case 3:
+                    _y += ((_speed * Math.Cos(_direction * (Math.PI / 8))) * 0.50);
+                    _x += ((_speed * Math.Sin(_direction * (Math.PI / 8))) * 0.50);
+                    break;
+                case 4:
+                    _y += ((_speed * Math.Cos(_direction * (Math.PI / 8))) * 0.25);
+                    _x += ((_speed * Math.Sin(_direction * (Math.PI / 8))) * 0.75);
+                    break;
+                case 5:
+                    _x += ((_speed * Math.Sin(_direction * (Math.PI / 8))));
+                    break;
+                case 6:
+                    break;
+                case 7:
+                    break;
+                case 8:
+                    break;
+                case 9:
+                    break;
+                case 10:
+                    break;
+                case 11:
+                    break;
+                case 12:
+                    break;
+                case 13:
+                    break;
+                case 14:
+                    break;
+                case 15:
+                    break;
+                case 16:
+                    break;
+            }
+
+
+
+
+
+
+
+            RacerSprites.showSprite(76, 25, _direction);
+        }
 
     }
 }
