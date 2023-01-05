@@ -2,39 +2,50 @@ namespace Retro_Racer
 {
     class trackHandler
     {
-        public string[,] currentTrack = new string[,] { };
-        public string[,] previouShownTrack = new string[102, 53];
+        public string[,] currentTrack = new string[264, 264];
+        public string[,] previouShownTrack = trackReference.bufferStart;
         private int _height;
         private int _width;
         private int _trackHeight;
         private int _trackWidth;
-        public trackHandler(string[,] track, int consoleHeight, int consoleWidth)
+        private int _cMidX;
+        private int _cMidY;
+        public trackHandler(string[,] track, int consoleHeight, int consoleWidth, int consoleMidX, int consoleMidY)
         {
             currentTrack = track;
+            System.Console.WriteLine("Track Height: " + track.GetLength(0) + " Track Width: " + track.GetLength(1));
             _height = consoleHeight;
             _width = consoleWidth;
             _trackHeight = track.GetLength(0);
             _trackWidth = track.GetLength(1);
+            _cMidX = consoleMidX;
+            _cMidY = consoleMidY;
         }
 
-        public void drawTrackSection(int x, int y, int midy, int midx)
+        public void drawTrackSection(int x, int y, int midx, int midy)
         {
-            var checkedHeight = 0; //int (int y) => { y + _height > _trackHeight ? y - _trackHeight : _height};
-            var checkedWidth = 0;
-            if (y + _height > _trackHeight) checkedHeight = y - _trackHeight;
-            else checkedHeight = _height;
-            if (x + _width > _trackWidth) checkedWidth = x - _trackWidth;
-            else checkedWidth = _width;
+            // var checkedHeight = 0; //int (int y) => { y + _height > _trackHeight ? y - _trackHeight : _height};
+            // var checkedWidth = 0;
+            // if (y + _height > _trackHeight) checkedHeight = y - _trackHeight;
+            // else checkedHeight = _height;
+            // if (x + _width > _trackWidth) checkedWidth = x - _trackWidth;
+            // else checkedWidth = _width;
 
-            for (int i = y; i < y + checkedHeight; i++)
+            var startx = midx - 75;
+            var starty = midy - 24;
+
+            var xcounter = startx;
+            var ycounter = starty;
+
+            for (int i = 0; i < _height; i++)
             {
-                for (int j = x; j < x + checkedWidth; j++)
+                for (int j = 0; j < _width; j++)
                 {
-                    if (previouShownTrack[i, j] != currentTrack[i, j])
+                    if (previouShownTrack[i, j] != currentTrack[ycounter, xcounter])
                     {
                         Console.SetCursorPosition(j, i);
                         // System.Console.Write(currentTrack[i, j]);
-                        switch (currentTrack[i, j])
+                        switch (currentTrack[ycounter, xcounter])
                         {
                             case "Track":
                                 Console.BackgroundColor = ConsoleColor.DarkYellow;
@@ -45,16 +56,18 @@ namespace Retro_Racer
                             case "Wall":
                                 Console.BackgroundColor = ConsoleColor.Black;
                                 break;
-                            default:
-                                Console.BackgroundColor = ConsoleColor.DarkYellow;
-                                break;
                         }
                         System.Console.WriteLine(' ');
 
-                        previouShownTrack[i, j] = currentTrack[i, j];
+
+                        // System.Console.WriteLine(xcounter + " " + ycounter + " " + currentTrack[ycounter, xcounter]); // Debugging
+                        previouShownTrack[i, j] = currentTrack[ycounter, xcounter];
 
                     }
+                    xcounter++;
                 }
+                ycounter++;
+                xcounter = startx;
             }
             Console.BackgroundColor = ConsoleColor.Black;
 
