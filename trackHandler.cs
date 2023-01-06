@@ -2,7 +2,8 @@ namespace Retro_Racer
 {
     class trackHandler
     {
-        public string[,] currentTrack = new string[264, 264];
+        public string[,] currentTrack = new string[,] { };
+        public string[,] currentShownTrack = trackReference.bufferStart;
         public string[,] previouShownTrack = trackReference.bufferStart;
         private int _height;
         private int _width;
@@ -44,6 +45,9 @@ namespace Retro_Racer
                     if (previouShownTrack[i, j] != currentTrack[ycounter, xcounter])
                     {
                         Console.SetCursorPosition(j, i);
+                        Console.BackgroundColor = ConsoleColor.DarkBlue;
+                        Console.Write(' ');
+                        Console.SetCursorPosition(j, i);
                         // System.Console.Write(currentTrack[i, j]);
                         switch (currentTrack[ycounter, xcounter])
                         {
@@ -57,8 +61,7 @@ namespace Retro_Racer
                                 Console.BackgroundColor = ConsoleColor.Black;
                                 break;
                         }
-                        System.Console.WriteLine(' ');
-
+                        System.Console.Write(' ');
 
                         // System.Console.WriteLine(xcounter + " " + ycounter + " " + currentTrack[ycounter, xcounter]); // Debugging
                         previouShownTrack[i, j] = currentTrack[ycounter, xcounter];
@@ -69,7 +72,9 @@ namespace Retro_Racer
                 ycounter++;
                 xcounter = startx;
             }
-            Console.BackgroundColor = ConsoleColor.Black;
+            // Console.BackgroundColor = ConsoleColor.Black;
+            Console.SetCursorPosition(0, 0);
+            // System.Console.WriteLine("X: " + x + " Y: " + y + " MidX: " + midx + " MidY: " + midy);
 
         }
     }

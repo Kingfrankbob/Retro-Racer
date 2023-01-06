@@ -4,6 +4,11 @@ namespace Retro_Racer
 {
     class Program
     {
+        /*
+            Another thing to note: When you go you have to move in the X direction first??????????????????? then the Y dir does not mess up like it ahs previously
+
+
+        */
         static void Main(string[] args) // 128x128 = 16384 total entries
         {
             Console.Clear();
@@ -15,12 +20,7 @@ namespace Retro_Racer
             var curRacer = new Racer(76, 25);
             var x = 90L;
             var y = 154L;
-            var trck = trackReference.track1;
 
-            // trackHandlerC.drawTrackSection(middle.Item1 - 76, middle.Item2 - 25);
-
-            // var previousCounter = 0;
-            // var spriteCounter = 0;
 
             while (true)
             {
@@ -29,20 +29,20 @@ namespace Retro_Racer
                     switch (Console.ReadKey().Key)
                     {
                         case ConsoleKey.UpArrow:
+                            if (y > 75) y--;
                             // curRacer.accelerate();
-                            if (y < 188) y++;
                             break;
                         case ConsoleKey.DownArrow:
                             // curRacer.brake();
-                            if (y > 75) y--;
+                            if (y < 188) y++;
                             break;
                         case ConsoleKey.LeftArrow:
                             // curRacer.turnLeft();
-                            if (x > 75) x--;
+                            if (x < 188) x++;
                             break;
                         case ConsoleKey.RightArrow:
                             // curRacer.turnRight();
-                            if (x < 188) x++;
+                            if (x > 75) x--;
                             break;
 
                     }
