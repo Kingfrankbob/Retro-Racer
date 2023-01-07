@@ -11,7 +11,7 @@ namespace Retro_Racer
         private int _trackWidth;
         private int _cMidX;
         private int _cMidY;
-        public trackHandler(string[,] track, int consoleHeight, int consoleWidth, int consoleMidX, int consoleMidY)
+        public trackHandler(string[,] track, int consoleHeight, int consoleWidth)
         {
             currentTrack = track;
             System.Console.WriteLine("Track Height: " + track.GetLength(0) + " Track Width: " + track.GetLength(1));
@@ -19,21 +19,22 @@ namespace Retro_Racer
             _width = consoleWidth;
             _trackHeight = track.GetLength(0);
             _trackWidth = track.GetLength(1);
-            _cMidX = consoleMidX;
-            _cMidY = consoleMidY;
+            // System.Console.WriteLine(
+            //     "Console Height: " + consoleHeight + " Console Width: " + consoleWidth + " MidX " + ((consoleWidth / 2))
+            // );
+            _cMidX = (consoleWidth / 2);
+            _cMidY = (consoleHeight / 2);
         }
 
         public void drawTrackSection(int x, int y, int midx, int midy)
         {
-            // var checkedHeight = 0; //int (int y) => { y + _height > _trackHeight ? y - _trackHeight : _height};
-            // var checkedWidth = 0;
-            // if (y + _height > _trackHeight) checkedHeight = y - _trackHeight;
-            // else checkedHeight = _height;
-            // if (x + _width > _trackWidth) checkedWidth = x - _trackWidth;
-            // else checkedWidth = _width;
 
-            var startx = midx - 75;
-            var starty = midy - 24;
+            var startx = midx - _cMidX;
+            var starty = midy - _cMidY;
+            if (startx < 0) startx = 0;
+            if (starty < 0) starty = 0;
+            if (midx + _cMidX > _trackWidth) { }
+            if (midy + _cMidY > _trackHeight) { }
 
             var xcounter = startx;
             var ycounter = starty;
@@ -73,7 +74,7 @@ namespace Retro_Racer
                 xcounter = startx;
             }
             // Console.BackgroundColor = ConsoleColor.Black;
-            Console.SetCursorPosition(0, 0);
+            // Console.SetCursorPosition(0, 0);
             // System.Console.WriteLine("X: " + x + " Y: " + y + " MidX: " + midx + " MidY: " + midy);
 
         }

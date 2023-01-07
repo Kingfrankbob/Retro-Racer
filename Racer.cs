@@ -24,7 +24,7 @@ namespace Retro_Racer
 
         public void accelerate()
         {
-            if (_speed < _maxSpeed) _speed++;
+            if (_speed < _maxSpeed) _speed += _acceleration;
         }
 
         public void turnLeft()
@@ -41,7 +41,7 @@ namespace Retro_Racer
 
         public void brake()
         {
-            if (_speed > (_maxSpeed * -1)) _speed--;
+            if (_speed > (_maxSpeed * -1)) _speed -= _acceleration;
         }
 
         public void draw()
@@ -77,72 +77,68 @@ namespace Retro_Racer
             switch (_direction)
             {
                 case 1:
-                    _y += (_speed * Math.Cos(_direction));
+                    _y -= (_speed);
                     break;
                 case 2:
-                    _y += ((_speed * Math.Cos(_direction)) * 0.75);
-                    _x += ((_speed * Math.Sin(_direction)) * 0.25);
+                    _y -= ((_speed) * 0.75);
+                    _x += ((_speed) * 0.25);
                     break;
                 case 3:
-                    _y += ((_speed * Math.Cos(_direction)) * 0.50);
-                    _x += ((_speed * Math.Sin(_direction)) * 0.50);
+                    _y -= ((_speed) * 0.50);
+                    _x += ((_speed) * 0.50);
                     break;
                 case 4:
-                    _y += ((_speed * Math.Cos(_direction)) * 0.25);
-                    _x += ((_speed * Math.Sin(_direction)) * 0.75);
+                    _y -= ((_speed) * 0.25);
+                    _x += ((_speed) * 0.75);
                     break;
                 case 5:
-                    _x += (_speed * Math.Sin(_direction));
+                    _x += (_speed);
                     break;
                 case 6:
-                    _y -= ((_speed * Math.Cos(_direction)) * 0.25);
-                    _x += ((_speed * Math.Sin(_direction)) * 0.75);
+                    _y += ((_speed) * 0.25);
+                    _x += ((_speed) * 0.75);
                     break;
                 case 7:
-                    _y -= ((_speed * Math.Cos(_direction)) * 0.50);
-                    _x += ((_speed * Math.Sin(_direction)) * 0.50);
+                    _y += ((_speed) * 0.50);
+                    _x += ((_speed) * 0.50);
                     break;
                 case 8:
-                    _y -= ((_speed * Math.Cos(_direction)) * 0.75);
-                    _x += ((_speed * Math.Sin(_direction)) * 0.25);
+                    _y += ((_speed) * 0.75);
+                    _x += ((_speed) * 0.25);
                     break;
                 case 9:
-                    _y -= (_speed * Math.Cos(_direction));
+                    _y += (_speed);
                     break;
                 case 10:
-                    _y -= ((_speed * Math.Cos(_direction)) * 0.75);
-                    _x -= ((_speed * Math.Sin(_direction)) * 0.25);
+                    _y += ((_speed) * 0.75);
+                    _x -= ((_speed) * 0.25);
                     break;
                 case 11:
-                    _y -= ((_speed * Math.Cos(_direction)) * 0.50);
-                    _x -= ((_speed * Math.Sin(_direction)) * 0.50);
+                    _y += ((_speed) * 0.50);
+                    _x -= ((_speed) * 0.50);
                     break;
                 case 12:
-                    _y -= ((_speed * Math.Cos(_direction)) * 0.25);
-                    _x -= ((_speed * Math.Sin(_direction)) * 0.75);
+                    _y += ((_speed) * 0.25);
+                    _x -= ((_speed) * 0.75);
                     break;
                 case 13:
-                    _x -= ((_speed * Math.Sin(_direction)) * 0.75);
+                    _x -= ((_speed) * 0.75);
                     break;
                 case 14:
-                    _y += ((_speed * Math.Cos(_direction)) * 0.25);
-                    _x -= ((_speed * Math.Sin(_direction)) * 0.75);
+                    _y -= ((_speed) * 0.25);
+                    _x -= ((_speed) * 0.75);
                     break;
                 case 15:
-                    _y += ((_speed * Math.Cos(_direction)) * 0.50);
-                    _x -= ((_speed * Math.Sin(_direction)) * 0.50);
+                    _y -= ((_speed) * 0.50);
+                    _x -= ((_speed) * 0.50);
                     break;
                 case 16:
-                    _y += ((_speed * Math.Cos(_direction)) * 0.75);
-                    _x -= ((_speed * Math.Sin(_direction)) * 0.25);
+                    _y -= ((_speed) * 0.75);
+                    _x -= ((_speed) * 0.25);
                     break;
             }
 
-
-
-
             if (_direction != _prevDir) RacerSprites.showSprite(76, 25, _direction);
-
             _prevDir = _direction;
 
         }
