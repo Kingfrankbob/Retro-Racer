@@ -17,6 +17,12 @@ namespace Retro_Racer
             var fileInfo = info.GetFiles();
             Environment.CurrentDirectory = targetPath;
 
+            System.Console.WriteLine("Now setting colors used, give in example (0xffRRGGB -> 0xff00ff42)");
+            System.Console.WriteLine("Please Enter Track Color: (Hex)");
+            var trackColor = Console.ReadLine() ?? "";
+            System.Console.WriteLine("Please Enter Wall Color: (Hex)");
+
+
             StreamWriter sw = new StreamWriter("output.txt");
 
             foreach (var file in fileInfo)
@@ -42,7 +48,7 @@ namespace Retro_Racer
                     if (line.Contains("HEIGHT")) height = int.Parse(line.Split(' ')[2]);
                 }
 
-                sw.Write("public static string[,] " + name + " = new string[,] {");
+                sw.Write("public static string[,] " + name + " = new string[,] { \n");
 
                 for (int i = 0; i < readable.Count; i++)
                 {
@@ -53,39 +59,48 @@ namespace Retro_Racer
                     {
                         if (counter != each.Count() - 1)
                         {
-                            switch (set.TrimEnd(','))
-                            {
-                                case "0xff000000":
-                                    sw.Write("\"Wall\", ");
-                                    break;
-                                case "0xffffffff":
-                                    sw.Write("\"Track\", ");
-                                    break;
-                                case "0xff00ff42":
-                                    sw.Write("\"Grass\", ");
-                                    break;
-                                default:
-                                    sw.Write("\"Unknown\", ");
-                                    break;
-                            }
+                            if(set.Contains("0xff000000")) sw.Write("\"Wall\", ");
+                            else if(set.Contains("0xffffffff")) sw.Write("\"Track\", ");
+                            else if(set.contains("0xff0ff42") || set.Contains("0xff42ff00")) sw.Write("\"Grass\", ");
+                            else sw.Write("\"Unknown\", ");
+                            // switch (set.TrimEnd(','))
+                            // {
+                            //     case "0xff000000":
+                            //         sw.Write("\"Wall\", ");
+                            //         break;
+                            //     case "0xffffffff":
+                            //         sw.Write("\"Track\", ");
+                            //         break;
+                            //     case "0xff00ff42":
+                            //         sw.Write("\"Grass\", ");
+                            //         break;
+                            //     default:
+                            //         sw.Write("\"Unknown\", ");
+                            //         break;
+                            // }
                         }
                         if (counter == each.Count() - 1)
                         {
-                            switch (set.TrimEnd(','))
-                            {
-                                case "0xff000000":
-                                    sw.Write("\"Wall\" },  ");
-                                    break;
-                                case "0xffffffff":
-                                    sw.Write("\"Track\" },  ");
-                                    break;
-                                case "0xff00ff42":
-                                    sw.Write("\"Grass\" },  ");
-                                    break;
-                                default:
-                                    sw.Write("\"Unknown\" }, ");
-                                    break;
-                            }
+                            if(set.Contains("0xff000000")) sw.Write("\"Wall\" }, ");
+                            else if(set.Contains("0xffffffff")) sw.Write("\"Track\" }, ");
+                            else if(set.contains("0xff0ff42") || set.Contains("0xff42ff00")) sw.Write("\"Grass\" }, ");
+                            else sw.Write("\"Unknown\" }, ");
+
+                            // switch (set.TrimEnd(','))
+                            // {
+                            //     case "0xff000000":
+                            //         sw.Write("\"Wall\" },  ");
+                            //         break;
+                            //     case "0xffffffff":
+                            //         sw.Write("\"Track\" },  ");
+                            //         break;
+                            //     case "0xff00ff42":
+                            //         sw.Write("\"Grass\" },  ");
+                            //         break;
+                            //     default:
+                            //         sw.Write("\"Unknown\" }, ");
+                            //         break;
+                            // }
                             sw.WriteLine();
                         }
                         counter++;
