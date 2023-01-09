@@ -14,7 +14,7 @@ namespace Retro_Racer
         public trackHandler(string[,] track, int consoleHeight, int consoleWidth)
         {
             currentTrack = track;
-            System.Console.WriteLine("Track Height: " + track.GetLength(0) + " Track Width: " + track.GetLength(1));
+            // System.Console.WriteLine("Track Height: " + track.GetLength(0) + " Track Width: " + track.GetLength(1));
             _height = consoleHeight;
             _width = consoleWidth;
             _trackHeight = track.GetLength(0);
@@ -76,6 +76,58 @@ namespace Retro_Racer
             // Console.BackgroundColor = ConsoleColor.Black;
             // Console.SetCursorPosition(0, 0);
             // System.Console.WriteLine("X: " + x + " Y: " + y + " MidX: " + midx + " MidY: " + midy);
+
+        }
+        public static void showCred()
+        {
+            for (int i = 0; i < trackReference.mcProd.GetLength(0); i++)
+            {
+                for (int j = 0; j < trackReference.mcProd.GetLength(1); j++)
+                {
+                    Console.SetCursorPosition(j, i);
+                    switch (trackReference.mcProd[i, j])
+                    {
+                        case "Track":
+                            Console.BackgroundColor = ConsoleColor.DarkGreen;
+                            break;
+                        case "Grass":
+                            Console.BackgroundColor = ConsoleColor.DarkBlue;
+                            break;
+                        case "Wall":
+                            Console.BackgroundColor = ConsoleColor.DarkCyan;
+                            break;
+                    }
+                    System.Console.Write(' ');
+                }
+            }
+
+        }
+
+        public static void showTitle()
+        {
+            for (int i = 0; i < trackReference.Title.GetLength(0); i++)
+            {
+                for (int j = 0; j < trackReference.Title.GetLength(1); j++)
+                {
+                    Console.SetCursorPosition(j, i);
+                    switch (trackReference.Title[i, j])
+                    {
+                        case "Track":
+                            Console.BackgroundColor = ConsoleColor.Black;
+                            break;
+                        case "Unknown":
+                            Console.BackgroundColor = ConsoleColor.Cyan;
+                            break;
+                        case "Wall":
+                            Console.BackgroundColor = ConsoleColor.Black;
+                            break;
+                        case "Grass":
+                            Console.BackgroundColor = ConsoleColor.Green;
+                            break;
+                    }
+                    System.Console.Write(' ');
+                }
+            }
 
         }
     }
