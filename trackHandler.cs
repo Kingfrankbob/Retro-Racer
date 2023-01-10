@@ -14,14 +14,10 @@ namespace Retro_Racer
         public trackHandler(string[,] track, int consoleHeight, int consoleWidth)
         {
             currentTrack = track;
-            // Console.WriteLine("Track Height: " + track.GetLength(0) + " Track Width: " + track.GetLength(1));
             _height = consoleHeight;
             _width = consoleWidth;
             _trackHeight = track.GetLength(0);
             _trackWidth = track.GetLength(1);
-            // Console.WriteLine(
-            //     "Console Height: " + consoleHeight + " Console Width: " + consoleWidth + " MidX " + ((consoleWidth / 2))
-            // );
             _cMidX = (consoleWidth / 2);
             _cMidY = (consoleHeight / 2);
         }
@@ -33,11 +29,13 @@ namespace Retro_Racer
             var starty = midy - _cMidY;
             if (startx < 0) startx = 0;
             if (starty < 0) starty = 0;
+
             if (midx + _cMidX > _trackWidth)
             {
                 var difference = midx + _cMidX - _trackWidth;
                 startx -= difference;
             }
+
             if (midy + _cMidY > _trackHeight)
             {
                 var difference = midy + _cMidY - _trackWidth;
@@ -54,10 +52,6 @@ namespace Retro_Racer
                     if (previouShownTrack[i, j] != currentTrack[ycounter, xcounter])
                     {
                         Console.SetCursorPosition(j, i);
-                        Console.BackgroundColor = ConsoleColor.DarkBlue;
-                        Console.Write(' ');
-                        Console.SetCursorPosition(j, i);
-                        // Console.Write(currentTrack[i, j]);
                         switch (currentTrack[ycounter, xcounter])
                         {
                             case "Track":
@@ -71,20 +65,13 @@ namespace Retro_Racer
                                 break;
                         }
                         Console.Write(' ');
-
-                        // Console.WriteLine(xcounter + " " + ycounter + " " + currentTrack[ycounter, xcounter]); // Debugging
                         previouShownTrack[i, j] = currentTrack[ycounter, xcounter];
-
                     }
                     xcounter++;
                 }
                 ycounter++;
                 xcounter = startx;
             }
-            // Console.BackgroundColor = ConsoleColor.Black;
-            // Console.SetCursorPosition(0, 0);
-            // Console.WriteLine("X: " + x + " Y: " + y + " MidX: " + midx + " MidY: " + midy);
-
         }
         public string getTrackSection(int x, int y)
         {

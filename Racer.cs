@@ -122,7 +122,7 @@ namespace Retro_Racer
                     _x -= ((_speed) * 0.75);
                     break;
                 case 13:
-                    _x -= ((_speed) * 0.75);
+                    _x -= (_speed);
                     break;
                 case 14:
                     _y -= ((_speed) * 0.25);

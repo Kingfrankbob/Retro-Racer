@@ -59,24 +59,24 @@ Would you like to set custom, or use pre-programmed?
                         break;
 
                     case 2:
-                        Console.WriteLine("Please Enter Track Color: (Hex)");
-                        trackColor = Console.ReadLine() ?? "";
+                        Console.WriteLine("Please Enter Track Color: (Hex)"); // DEFAULT TO ORIGINAL COLORS
+                        trackColor = Console.ReadLine() ?? "0xff000000";
                         Console.WriteLine("Please Enter Wall Color: (Hex)");
-                        wallColor = Console.ReadLine() ?? "";
+                        wallColor = Console.ReadLine() ?? "0xffffffff";
                         Console.WriteLine("Please Enter Grass Color: (Hex)");
-                        grassColor = Console.ReadLine() ?? "";
-                        Console.WriteLine("Note: if by any chance you messed up, please press 'ctrl+c' and try again \n If not the results could be terrible and/or not as expected");
+                        grassColor = Console.ReadLine() ?? "0xff42ff00";
+                        Console.WriteLine("Note: if by any chance you messed up, please press 'ctrl+c' and try again \nIf not the results could be terrible and/or not as expected");
                         break;
                 }
             }
+
             catch (Exception e)
             {
-                Console.WriteLine("Please, no time to waste, rerun the whole thing again ERROR -> " + e);
+                Console.WriteLine("Please, no time to waste, rerun the whole thing again... ERROR -> " + e);
                 convertTrack();
             }
 
             StreamWriter sw = new StreamWriter("output.cs");
-
 
             sw.WriteLine("namespace Retro_Racer\n{\n    class importedMaps\n    {\n");
 
@@ -100,15 +100,15 @@ Would you like to set custom, or use pre-programmed?
                 for (int i = 0; i < lines.Length; i++)
                 {
                     var line = lines[i];
-                    if (line.Contains("0x")) { readable.Add(line); }
+                    if (line.Contains("0x")) readable.Add(line);
                     if (line.Contains("WIDTH")) width = int.Parse(line.Split(' ')[2]);
                     if (line.Contains("HEIGHT")) height = int.Parse(line.Split(' ')[2]);
                 }
 
-                sw.WriteLine("// Width: " + width + " Height: " + height + " Map Conversion Number: " + fileCounter);
+                sw.WriteLine("// Width: " + width + " Height: " + height + " Map Conversion Number: " + fileCounter + " Uncleaned Name: " + name);
                 sw.Write("public static string[,] " + cleanedName + " = new string[,]\n{\n{");
 
-                Console.WriteLine(" Name: {0}, Width: {1}, Height: {2}, Map#: {3}", name, width, height, fileCounter);
+                Console.WriteLine("Name: {0}, Width: {1}, Height: {2}, Map#: {3}", name, width, height, fileCounter);
 
                 bool newLine = false;
 
@@ -155,7 +155,7 @@ Would you like to set custom, or use pre-programmed?
                         counter++;
                     }
                     counter = 0;
-                    if (counter != each.Count() - 1 && newLine) sw.Write('{');
+                    if (counter != each.Count() - 1 && newLine) sw.Write("  {");
                 }
                 sw.Write("};");
                 sw.WriteLine();
