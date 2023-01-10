@@ -252,5 +252,78 @@ namespace Retro_Racer
             }
 
         }
+        public static int[,] racerSpriteC(int number)
+        {
+            var one = carUD; // Start UpDown
+            var two = car25LDRUB45;
+            var three = car45DLUR;
+            var four = car25LDRUA45;
+            var five = carLR; //Top going Right
+            var six = car25LURDB45;
+            var seven = car45ULDR;
+            var eight = car25LURDA45;
+            var nine = carUD; // Opposite of start going down
+            var ten = car25LDRUB45;
+            var eleven = car45DLUR;
+            var twelve = car25LDRUA45;
+            var thirteen = carLR; //Bottom going Left
+            var fourteen = car25LURDB45;
+            var fifteen = car45ULDR;
+            var sixteen = car25LURDA45;
+            switch (number)
+            {
+                case 1:
+                    return one;
+
+                case 2:
+                    return two;
+
+                case 3:
+                    return three;
+
+                case 4:
+                    return four;
+
+                case 5:
+                    return five;
+
+                case 6:
+                    return six;
+
+                case 7:
+                    return seven;
+
+                case 8:
+                    return eight;
+
+                case 9:
+                    return nine;
+
+                case 10:
+                    return ten;
+
+                case 11:
+                    return eleven;
+
+                case 12:
+                    return twelve;
+
+                case 13:
+                    return thirteen;
+
+                case 14:
+                    return fourteen;
+
+                case 15:
+                    return fifteen;
+
+                case 16:
+                    return sixteen;
+
+            }
+
+            return new int[0, 0]; // Welp if you do not have a good number that is your problem...
+
+        }
     }
 }

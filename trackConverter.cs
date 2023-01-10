@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using System.IO;
+using System.Linq;
 using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 
 namespace Retro_Racer
 {
@@ -30,7 +30,7 @@ namespace Retro_Racer
             string wallColor = "fdasfdsa";
             string grassColor = "asdffdsa";
 
-            System.Console.WriteLine(@"Now setting colors, give in Hex format -> example (0xffRRGGBB -> 0xff00ff42)
+            Console.WriteLine(@"Now setting colors, give in Hex format -> example (0xffRRGGBB -> 0xff00ff42)
             
 The current pre-programmed colors are:
 0xffffffff as Track (White)
@@ -40,6 +40,7 @@ The current pre-programmed colors are:
 
 NOTE:
 ALL FILE CONTENTS OF 'output.cs' WILL BE OVERWRITTEN, MAKE SURE YOU HAVE SAVED CURRENT WORK!!!
+When you finish converting you will be taken back to the title screen...
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -51,26 +52,26 @@ Would you like to set custom, or use pre-programmed?
                 switch (int.Parse(Console.ReadLine() ?? ""))
                 {
                     case 1:
-                        System.Console.WriteLine("Pre-Programmed Selected!");
+                        Console.WriteLine("Pre-Programmed Selected!");
                         wallColor = "0xff000000";
                         trackColor = "0xffffffff";
                         grassColor = "0xff42ff00";
                         break;
 
                     case 2:
-                        System.Console.WriteLine("Please Enter Track Color: (Hex)");
+                        Console.WriteLine("Please Enter Track Color: (Hex)");
                         trackColor = Console.ReadLine() ?? "";
-                        System.Console.WriteLine("Please Enter Wall Color: (Hex)");
+                        Console.WriteLine("Please Enter Wall Color: (Hex)");
                         wallColor = Console.ReadLine() ?? "";
-                        System.Console.WriteLine("Please Enter Grass Color: (Hex)");
+                        Console.WriteLine("Please Enter Grass Color: (Hex)");
                         grassColor = Console.ReadLine() ?? "";
-                        System.Console.WriteLine("Note: if by any chance you messed up, please press 'ctrl+c' and try again \n If not the results could be terrible and/or not as expected");
+                        Console.WriteLine("Note: if by any chance you messed up, please press 'ctrl+c' and try again \n If not the results could be terrible and/or not as expected");
                         break;
                 }
             }
             catch (Exception e)
             {
-                System.Console.WriteLine("Please, no time to waste, rerun the whole thing again ERROR -> " + e);
+                Console.WriteLine("Please, no time to waste, rerun the whole thing again ERROR -> " + e);
                 convertTrack();
             }
 
@@ -81,14 +82,14 @@ Would you like to set custom, or use pre-programmed?
 
             foreach (var file in fileInfo)
             {
-                var name = file.Name;
-                var cleanedName = String.Concat(name.Where(c => !Char.IsWhiteSpace(c) || c == '.' || c == ','));
+                var name = file.Name.Replace('.', ' ');
+                var cleanedName = String.Concat(name.Where(c => !Char.IsWhiteSpace(c)));
                 if (ignore.Contains(name.Split('.')[1])) continue;
 
                 var counter = 0;
 
-                if (File.Exists(name)) System.Console.WriteLine("File exists");
-                else { System.Console.WriteLine("Somehow the code is broken?"); return; }
+                if (File.Exists(name)) Console.WriteLine("File exists");
+                else { Console.WriteLine("Somehow the code is broken?"); return; }
 
                 var lines = File.ReadAllLines(name);
                 var readable = new List<string>();
@@ -106,7 +107,7 @@ Would you like to set custom, or use pre-programmed?
                 sw.WriteLine("// Width: " + width + " Height: " + height + " Map Conversion Number: " + fileCounter);
                 sw.Write("public static string[,] " + cleanedName + " = new string[,]\n{\n{");
 
-                System.Console.WriteLine(" Name: {0}, Width: {1}, Height: {2}, Map#: {3}, Total Lines (Testing Purposes): {4}", name, width, height, fileCounter, readable.Count);
+                Console.WriteLine(" Name: {0}, Width: {1}, Height: {2}, Map#: {3}", name, width, height, fileCounter);
 
                 bool newLine = false;
 
@@ -129,21 +130,6 @@ Would you like to set custom, or use pre-programmed?
                             else if (set.Contains(trackColor)) sw.Write("\"Track\", ");
                             else if (set.Contains(grassColor)) sw.Write("\"Grass\", ");
                             else sw.Write("\"Unknown\", ");
-                            // switch (set.TrimEnd(','))
-                            // {
-                            //     case "0xff000000":
-                            //         sw.Write("\"Wall\", ");
-                            //         break;
-                            //     case "0xffffffff":
-                            //         sw.Write("\"Track\", ");
-                            //         break;
-                            //     case "0xff00ff42":
-                            //         sw.Write("\"Grass\", ");
-                            //         break;
-                            //     default:
-                            //         sw.Write("\"Unknown\", ");
-                            //         break;
-                            // }
                         }
                         if (counter == each.Count() - 1 && i != readable.Count - 1)
                         {
@@ -176,7 +162,8 @@ Would you like to set custom, or use pre-programmed?
             }
             sw.WriteLine(" } }");
             sw.Close();
-            return;
+
+            Program.Main(new string[0]);
         }
     }
 }

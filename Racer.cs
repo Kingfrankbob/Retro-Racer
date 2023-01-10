@@ -142,10 +142,28 @@ namespace Retro_Racer
             _prevDir = _direction;
 
         }
+        public void checkCrash(trackHandler trackHandlerC)
+        {
+            var trackX = (int)(_x / 100);
+            var trackY = (int)(_y / 100);
+            var curRacerSprite = RacerSprites.racerSpriteC(_direction);
+
+            for (int i = 0; i < 7; i++)
+                for (int j = 0; j < 7; j++)
+                {
+                    if (trackHandlerC.getTrackSection(trackY + i, trackX + j) == "Wall" && curRacerSprite[i, j] == 1)
+                    {
+                        crash();
+                    }
+                }
+
+
+        }
         public void crash()
         {
             Console.Clear();
-            System.Console.WriteLine("CRASH!");
+            Console.WriteLine("CRASH!");
+            Environment.Exit(0);
         }
 
     }
