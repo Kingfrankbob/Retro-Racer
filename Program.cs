@@ -19,8 +19,6 @@ namespace Retro_Racer
             var trackHandlerC = new trackHandler(trackReference.track1, Console.BufferHeight, Console.BufferWidth);
             var curRacer = new Racer(13200, 13200); // Middle of screen
 
-
-
             Console.WriteLine("REMEMBER, to exit press ctrl + c keys at the same time!!!");
             Thread.Sleep(1000);
             titleRefrence.showCreds();

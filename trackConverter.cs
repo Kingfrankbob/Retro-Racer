@@ -24,7 +24,7 @@ namespace Retro_Racer
 
             Environment.CurrentDirectory = targetPath;
 
-            string[] ignore = new string[] { "png", "jpg", "txt", "cs" };
+            string[] ignore = new string[] { "png", "jpg", "txt", "cs", "jpeg" };
 
             string trackColor = "asdfasdf";
             string wallColor = "fdasfdsa";
@@ -82,9 +82,10 @@ Would you like to set custom, or use pre-programmed?
 
             foreach (var file in fileInfo)
             {
-                var name = file.Name.Replace('.', ' ');
-                var cleanedName = String.Concat(name.Where(c => !Char.IsWhiteSpace(c)));
-                if (ignore.Contains(name.Split('.')[1])) continue;
+                var name = file.Name;
+                var nextName = name.Replace('.', ' ');
+                var cleanedName = String.Concat(nextName.Where(c => !Char.IsWhiteSpace(c)));
+                if (ignore.Contains(name.Split('.')[1]) || name == "output.cs") continue;
 
                 var counter = 0;
 
