@@ -17,8 +17,7 @@ namespace Retro_Racer
             Console.SetWindowSize(151, 51);
             Console.SetBufferSize(151, 51);  // 76 is mid x point, 25 is mid y point
 
-            var trackHandlerC = new trackHandler(trackReference.track1, Console.BufferHeight, Console.BufferWidth);
-            var curRacer = new Racer(13200, 13200); // Middle of screen
+
 
             Console.WriteLine("REMEMBER, to exit press ctrl + c keys at the same time!!!");
             Thread.Sleep(1000);
@@ -32,7 +31,7 @@ namespace Retro_Racer
             switch (selection)
             {
                 case 1:
-                    startGame(trackHandlerC, curRacer);
+                    startGame();
                     break;
                 case 2:
                     trackConverter.convertTrack();
@@ -84,10 +83,12 @@ namespace Retro_Racer
             }
         }
 
-        public static void startGame(trackHandler trackHandlerC, Racer curRacer)
+        public static void startGame()
         {
-            var x = 90L;
-            var y = 154L;
+
+            var trackHandlerC = new trackHandler(trackReference.Track1, Console.BufferHeight, Console.BufferWidth);
+            var curRacer = new Racer(25000, 25000); // Middle of screen
+
             while (true)
             {
                 if (Console.KeyAvailable)

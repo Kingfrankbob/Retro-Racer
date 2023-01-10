@@ -45,7 +45,7 @@ namespace Retro_Racer
             var xcounter = startx;
             var ycounter = starty;
 
-            for (int i = 0; i < _height; i++)
+            for (int i = 0; i < _height - 1; i++)
             {
                 for (int j = 0; j < _width; j++)
                 {
@@ -65,8 +65,8 @@ namespace Retro_Racer
                                 break;
                         }
                         Console.Write(' ');
-                        previouShownTrack[i, j] = currentTrack[ycounter, xcounter];
                     }
+                    previouShownTrack[i, j] = currentTrack[ycounter, xcounter];
                     xcounter++;
                 }
                 ycounter++;
