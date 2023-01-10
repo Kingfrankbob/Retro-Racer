@@ -19,12 +19,12 @@ namespace Retro_Racer
 
 
 
-            Console.WriteLine("REMEMBER, to exit press ctrl + c keys at the same time!!!");
-            Thread.Sleep(1000);
-            titleRefrence.showCreds();
-            Thread.Sleep(1000);
-            titleRefrence.showGameTitle();
-            Thread.Sleep(1000);
+            // Console.WriteLine("REMEMBER, to exit press ctrl + c keys at the same time!!!");
+            // Thread.Sleep(1000);
+            // titleRefrence.showCreds();
+            // Thread.Sleep(1000);
+            // titleRefrence.showGameTitle();
+            // Thread.Sleep(1000);
 
             var selection = Title();
 
@@ -87,7 +87,7 @@ namespace Retro_Racer
         {
 
             var trackHandlerC = new trackHandler(trackReference.Track1, Console.BufferHeight, Console.BufferWidth);
-            var curRacer = new Racer(25000, 25000); // Middle of screen
+            var curRacer = new Racer(35000, 25000); // Middle of screen
 
             while (true)
             {
@@ -117,9 +117,12 @@ namespace Retro_Racer
 
                 Console.SetCursorPosition(0, 0);
                 Console.BackgroundColor = ConsoleColor.Black;
-                Console.Write(" Track X: " + (int)trackX + " Track Y: " + (int)trackY + " Direction: " + curRacer.Direction);
+                Console.Write(" Track X: " + (int)trackX + " Track Y: " + (int)trackY + " Direction: " + curRacer.Direction + " Speed: " + curRacer.Speed);
 
                 trackHandlerC.drawTrackSection(0, 0, (int)trackX, (int)trackY);
+
+                // curRacer.checkCrash(trackHandlerC);
+                curRacer.draw();
 
 
             }

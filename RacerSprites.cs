@@ -90,7 +90,7 @@ namespace Retro_Racer
      {0, 0, 1, 0, 0, 0, 0}};
 
 
-        public static void showSprite(int x, int y, int spriteNumber)
+        public static void showSprite(int x, int y, int spriteNumber, (int x, int y) curTack)
         {
             var one = carUD; // Start UpDown
             var two = car25LDRUB45;
@@ -223,6 +223,9 @@ namespace Retro_Racer
                     break;
             }
 
+            var checkedx = curTack.x / 100;
+            var checkedy = curTack.y / 100;
+
             for (int i = 0; i < 7; i++)
             {
                 for (int j = 0; j < 7; j++)
@@ -243,7 +246,18 @@ namespace Retro_Racer
                         }
                         else
                         {
-                            Console.BackgroundColor = ConsoleColor.DarkBlue;
+                            switch (trackReference.Track1[checkedy + i, checkedx + j])
+                            {
+                                case "Track":
+                                    Console.BackgroundColor = ConsoleColor.DarkYellow;
+                                    break;
+                                case "Grass":
+                                    Console.BackgroundColor = ConsoleColor.Green;
+                                    break;
+                                case "Wall":
+                                    Console.BackgroundColor = ConsoleColor.Black;
+                                    break;
+                            }
                             System.Console.Write(' ');
                         }
                     }

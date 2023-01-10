@@ -17,8 +17,8 @@ namespace Retro_Racer
             _y = startY;
             _speed = 0;
             _direction = 1;
-            _maxSpeed = 10;
-            _acceleration = 0.03;
+            _maxSpeed = 50;
+            _acceleration = 1.53;
 
         }
 
@@ -46,7 +46,7 @@ namespace Retro_Racer
 
         public void draw()
         {
-            RacerSprites.showSprite(76, 25, _direction);
+            RacerSprites.showSprite(76, 25, _direction, ((int)_x, (int)_y));
         }
 
         public double X
@@ -138,20 +138,21 @@ namespace Retro_Racer
                     break;
             }
 
-            if (_direction != _prevDir) RacerSprites.showSprite(76, 25, _direction);
-            _prevDir = _direction;
+            // if (_direction != _prevDir) RacerSprites.showSprite(76, 25, _direction, ((int)_x, (int)_y));
+            // _prevDir = _direction;
 
         }
         public void checkCrash(trackHandler trackHandlerC)
         {
-            var trackX = (int)(_x / 100);
-            var trackY = (int)(_y / 100);
+            var startx = trackHandlerC.x - 3;
+            var starty = trackHandlerC.y - 3;
+
             var curRacerSprite = RacerSprites.racerSpriteC(_direction);
 
             for (int i = 0; i < 7; i++)
                 for (int j = 0; j < 7; j++)
                 {
-                    if (trackHandlerC.getTrackSection(trackY + i, trackX + j) == "Wall" && curRacerSprite[i, j] == 1)
+                    if (trackHandlerC.getTrackSection(starty + i, startx + j) == "Wall")
                     {
                         crash();
                     }
@@ -161,7 +162,7 @@ namespace Retro_Racer
         }
         public void crash()
         {
-            Console.Clear();
+            Console.BackgroundColor = ConsoleColor.DarkGray;
             Console.WriteLine("CRASH!");
             Environment.Exit(0);
         }

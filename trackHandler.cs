@@ -11,6 +11,8 @@ namespace Retro_Racer
         private int _trackWidth;
         private int _cMidX;
         private int _cMidY;
+        public int x;
+        public int y;
         public trackHandler(string[,] track, int consoleHeight, int consoleWidth)
         {
             currentTrack = track;
@@ -41,6 +43,9 @@ namespace Retro_Racer
                 var difference = midy + _cMidY - _trackWidth;
                 starty -= difference;
             }
+
+            x = midx;
+            y = midy;
 
             var xcounter = startx;
             var ycounter = starty;
