@@ -44,11 +44,32 @@ namespace Retro_Racer
                 starty -= difference;
             }
 
+            var crashStartX = midx - 7;
+            var crashStartY = midy - 7;
+
             x = midx;
             y = midy;
 
             var xcounter = startx;
             var ycounter = starty;
+
+            var crashCoutnerX = crashStartX;
+            var crashCounterY = crashStartY;
+
+            for (int i = 0; i < 7; i++)
+            {
+                for (int j = 0; j < 7; j++)
+                {
+                    if (currentTrack[crashCounterY, crashCoutnerX] == "Wall")
+                    {
+                        Racer.Crash();
+                    }
+                    crashCoutnerX++;
+                }
+                crashCounterY++;
+                crashCoutnerX = crashStartX;
+            }
+
 
             for (int i = 0; i < _height - 1; i++)
             {

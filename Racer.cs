@@ -154,13 +154,13 @@ namespace Retro_Racer
                 {
                     if (trackHandlerC.getTrackSection(starty + i, startx + j) == "Wall")
                     {
-                        crash();
+                        Crash();
                     }
                 }
 
 
         }
-        public void crash()
+        public static void Crash()
         {
             Console.BackgroundColor = ConsoleColor.DarkGray;
             Console.WriteLine("CRASH!");
