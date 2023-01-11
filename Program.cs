@@ -14,8 +14,8 @@ namespace Retro_Racer
         {
 
             Console.Clear();
-            // Console.SetWindowSize(151, 51);
-            // Console.SetBufferSize(151, 51);  // 76 is mid x point, 25 is mid y point
+            Console.SetWindowSize(151, 51);
+            Console.SetBufferSize(151, 51);  // 76 is mid x point, 25 is mid y point
 
 
 
@@ -27,6 +27,7 @@ namespace Retro_Racer
             Thread.Sleep(1000);
 
             var selection = Title();
+            // var selection = 1;
 
             switch (selection)
             {
