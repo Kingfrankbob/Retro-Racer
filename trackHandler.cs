@@ -70,6 +70,9 @@ namespace Retro_Racer
                             case "Track":
                                 Console.BackgroundColor = ConsoleColor.DarkYellow;
                                 break;
+                            case "Start":
+                                Console.BackgroundColor = ConsoleColor.DarkYellow;
+                                break;
                             case "Grass":
                                 Console.BackgroundColor = ConsoleColor.Green;
                                 break;

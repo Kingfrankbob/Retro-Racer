@@ -29,8 +29,9 @@ namespace Retro_Racer
             string trackColor = "asdfasdf";
             string wallColor = "fdasfdsa";
             string grassColor = "asdffdsa";
+            string startColor = "fdsaasdf";
 
-            Console.WriteLine(@"Now setting colors, give in Hex format -> example (0xffRRGGBB -> 0xff00ff42)
+            Console.WriteLine(@"Now setting colors, give in Hex format -> example (0xffBBGGRR -> 0xff00ff42)
             
 The current pre-programmed colors are:
 0xffffffff as Track (White)
@@ -53,9 +54,10 @@ Would you like to set custom, or use pre-programmed?
                 {
                     case 1:
                         Console.WriteLine("Pre-Programmed Selected!");
-                        wallColor = "0xff000000";
                         trackColor = "0xffffffff";
+                        wallColor = "0xff000000";
                         grassColor = "0xff42ff00";
+                        startColor = "0xff0000ff";
                         break;
 
                     case 2:
@@ -65,14 +67,16 @@ Would you like to set custom, or use pre-programmed?
                         wallColor = Console.ReadLine() ?? "0xffffffff";
                         Console.WriteLine("Please Enter Grass Color: (Hex)");
                         grassColor = Console.ReadLine() ?? "0xff42ff00";
+                        Console.WriteLine("Please Enter Start Color: (Hex)");
+                        startColor = Console.ReadLine() ?? "0xff0000ff";
                         Console.WriteLine("Note: if by any chance you messed up, please press 'ctrl+c' and try again \nIf not the results could be terrible and/or not as expected");
                         break;
                 }
             }
 
-            catch (Exception e)
+            catch (Exception)
             {
-                Console.WriteLine("Please, no time to waste, rerun the whole thing again... ERROR -> " + e);
+                Console.WriteLine("Please, no time to waste, rerun the whole thing again... ERROR");
                 convertTrack();
             }
 
@@ -83,9 +87,11 @@ Would you like to set custom, or use pre-programmed?
             foreach (var file in fileInfo)
             {
                 var name = file.Name;
-                var nextName = name.Replace('.', ' ');
+                var nextName = name.Replace('.', ' ').Replace('(', ' ').Replace(')', ' ').Replace('-', ' ').Replace('_', ' ');
                 var cleanedName = String.Concat(nextName.Where(c => !Char.IsWhiteSpace(c)));
                 if (ignore.Contains(name.Split('.')[1]) || name == "output.cs") continue;
+                var startX = new List<int>();
+                var startY = new List<int>();
 
                 var counter = 0;
 
@@ -106,7 +112,7 @@ Would you like to set custom, or use pre-programmed?
                 }
 
                 sw.WriteLine("// Width: " + width + " Height: " + height + " Map Conversion Number: " + fileCounter + " Uncleaned Name: " + name);
-                sw.Write("public static string[,] " + cleanedName + " = new string[,]\n{\n{");
+                sw.Write("public static string[,] " + cleanedName + " = new string[,] {\n    {");
 
                 Console.WriteLine("Name: {0}, Width: {1}, Height: {2}, Map#: {3}", name, width, height, fileCounter);
 
@@ -129,7 +135,8 @@ Would you like to set custom, or use pre-programmed?
                         {
                             if (set.Contains(wallColor)) sw.Write("\"Wall\", ");
                             else if (set.Contains(trackColor)) sw.Write("\"Track\", ");
-                            else if (set.Contains(grassColor)) sw.Write("\"Grass\", ");
+                            else if (set.Contains(grassColor) || set.Contains("0xff00ff42")) sw.Write("\"Grass\", ");
+                            else if (set.Contains(startColor)) { sw.Write("\"Start\", "); startX.Add(counter); startY.Add(i); }
                             else sw.Write("\"Unknown\", ");
                         }
                         if (counter == each.Count() - 1 && i != readable.Count - 1)
@@ -138,6 +145,7 @@ Would you like to set custom, or use pre-programmed?
                             if (set.Contains(wallColor)) sw.Write("\"Wall\" }, ");
                             else if (set.Contains(trackColor)) sw.Write("\"Track\" }, ");
                             else if (set.Contains(grassColor) || set.Contains("0xff00ff42")) sw.Write("\"Grass\" }, ");
+                            else if (set.Contains(startColor)) { sw.Write("\"Start\" }, "); startX.Add(counter); startY.Add(i); }
                             else sw.Write("\"Unknown\" }, ");
                             sw.WriteLine();
                             newLine = true;
@@ -147,6 +155,7 @@ Would you like to set custom, or use pre-programmed?
                             if (set.Contains(wallColor)) sw.Write("\"Wall\" } ");
                             else if (set.Contains(trackColor)) sw.Write("\"Track\" } ");
                             else if (set.Contains(grassColor) || set.Contains("0xff00ff42")) sw.Write("\"Grass\" } ");
+                            else if (set.Contains(startColor)) { sw.Write("\"Start\" } "); startX.Add(counter); startY.Add(i); }
                             else sw.Write("\"Unknown\" } ");
                             sw.WriteLine();
                             newLine = false;
@@ -155,16 +164,26 @@ Would you like to set custom, or use pre-programmed?
                         counter++;
                     }
                     counter = 0;
-                    if (counter != each.Count() - 1 && newLine) sw.Write("  {");
+                    if (counter != each.Count() - 1 && newLine) sw.Write("   {");
                 }
-                sw.Write("};");
+                counter = 0;
+                sw.Write("    }; // Start is at (" + startX + ", " + startY + ")"); // LOLZ
+                sw.WriteLine();
+                sw.Write("    public static int[]" + cleanedName + "StartX = new int[]" + "{");
+                foreach (var item in startX) { sw.Write(item); if (counter != startY.Count - 1) sw.Write(", "); counter++; }
+                sw.Write("};\n");
+                counter = 0;
+                sw.Write("    public static int[]" + cleanedName + "StartY = new int[]" + "{");
+                foreach (var item in startY) { sw.Write(item); if (counter != startY.Count - 1) sw.Write(", "); counter++; }
+                sw.Write("};\n");
                 sw.WriteLine();
                 fileCounter++;
             }
-            sw.WriteLine(" } }");
+            sw.WriteLine(@"   }
+}");
             sw.Close();
 
-            Program.Main(new string[0]);
+            // Program.Main(new string[0]);
         }
     }
 }
