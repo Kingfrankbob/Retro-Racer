@@ -20,6 +20,7 @@ Title, credits and other screens
 ### TODO
 linking everything together and building all the parts together // WIP
 Need to resize credits, and prod screenz // Finished
+Add crash collision in the track handler? thought in the shwr...
 
 ### FIXED
 Graphical Line bugs. 
