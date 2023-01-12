@@ -163,8 +163,8 @@ namespace Retro_Racer
         public static void Crash()
         {
             Console.BackgroundColor = ConsoleColor.DarkGray;
-            Console.WriteLine("CRASH!");
-            Environment.Exit(0);
+            Console.WriteLine(" \n \n \nCRASH!");
+            // Environment.Exit(0);
         }
 
     }
