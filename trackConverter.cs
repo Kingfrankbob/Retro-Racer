@@ -1,3 +1,4 @@
+using System.Net.WebSockets;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -24,6 +25,8 @@ namespace Retro_Racer
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows)) targetPath = "\\input";
             else targetPath = "\\input";
 
+            System.Console.WriteLine(pathToCurrent + targetPath);
+
             var info = new DirectoryInfo(pathToCurrent + targetPath);
 
 
@@ -31,7 +34,7 @@ namespace Retro_Racer
             var fileCounter = 0;
             var totalFiles = info.EnumerateFiles().Count();
 
-            Environment.CurrentDirectory = targetPath;
+            Environment.CurrentDirectory = pathToCurrent + targetPath;
 
             string[] ignore = new string[] { "png", "jpg", "txt", "cs", "jpeg" };
 
