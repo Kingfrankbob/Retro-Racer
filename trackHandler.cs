@@ -3,7 +3,6 @@ namespace Retro_Racer
     class trackHandler
     {
         public string[,] currentTrack = new string[,] { };
-        public string[,] currentShownTrack = trackReference.bufferStart;
         public string[,] previouShownTrack = trackReference.bufferStart;
         private int _height;
         private int _width;
@@ -44,8 +43,8 @@ namespace Retro_Racer
                 starty -= difference;
             }
 
-            var crashStartX = midx - 7;
-            var crashStartY = midy - 7;
+            var crashStartX = midx - 1;
+            var crashStartY = midy - 1;
 
             x = midx;
             y = midy;
@@ -56,31 +55,22 @@ namespace Retro_Racer
             var crashCoutnerX = crashStartX;
             var crashCounterY = crashStartY;
 
-            for (int i = 0; i < 7; i++)
-            {
-                for (int j = 0; j < 7; j++)
-                {
-                    if (currentTrack[crashCounterY, crashCoutnerX] == "Wall")
-                    {
-                        Racer.Crash();
-                    }
-                    crashCoutnerX++;
-                }
-                crashCounterY++;
-                crashCoutnerX = crashStartX;
-            }
 
 
             for (int i = 0; i < _height - 1; i++)
             {
                 for (int j = 0; j < _width; j++)
                 {
+
                     if (previouShownTrack[i, j] != currentTrack[ycounter, xcounter])
                     {
                         Console.SetCursorPosition(j, i);
                         switch (currentTrack[ycounter, xcounter])
                         {
                             case "Track":
+                                Console.BackgroundColor = ConsoleColor.DarkYellow;
+                                break;
+                            case "Start":
                                 Console.BackgroundColor = ConsoleColor.DarkYellow;
                                 break;
                             case "Grass":
@@ -92,12 +82,31 @@ namespace Retro_Racer
                         }
                         Console.Write(' ');
                     }
+
                     previouShownTrack[i, j] = currentTrack[ycounter, xcounter];
                     xcounter++;
                 }
                 ycounter++;
                 xcounter = startx;
             }
+
+            for (int i = 0; i < 7; i++)
+            {
+                for (int j = 0; j < 7; j++)
+                {
+                    Console.BackgroundColor = ConsoleColor.Black;
+                    Console.SetCursorPosition(76 + j, 25 + i);
+                    System.Console.WriteLine(' ');
+                    if (currentTrack[crashCounterY, crashCoutnerX] == "Wall")
+                    {
+                        Racer.Crash();
+                    }
+                    crashCoutnerX++;
+                }
+                crashCounterY++;
+                crashCoutnerX = crashStartX;
+            }
+
         }
         public string getTrackSection(int x, int y)
         {

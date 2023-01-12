@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "/workspaces/Retro-Racer/Retro-Racer.csproj": {}
+    "E:\\Code Related\\Repos\\Retro-Racer\\Retro-Racer.csproj": {}
   },
   "projects": {
-    "/workspaces/Retro-Racer/Retro-Racer.csproj": {
+    "E:\\Code Related\\Repos\\Retro-Racer\\Retro-Racer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/workspaces/Retro-Racer/Retro-Racer.csproj",
+        "projectUniqueName": "E:\\Code Related\\Repos\\Retro-Racer\\Retro-Racer.csproj",
         "projectName": "Retro-Racer",
-        "projectPath": "/workspaces/Retro-Racer/Retro-Racer.csproj",
-        "packagesPath": "/home/codespace/.nuget/packages/",
-        "outputPath": "/workspaces/Retro-Racer/obj/",
+        "projectPath": "E:\\Code Related\\Repos\\Retro-Racer\\Retro-Racer.csproj",
+        "packagesPath": "C:\\Users\\cragu\\.nuget\\packages\\",
+        "outputPath": "E:\\Code Related\\Repos\\Retro-Racer\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/home/codespace/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\cragu\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net7.0"
@@ -53,7 +53,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/dotnet/7.0.101/sdk/7.0.101/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     }
