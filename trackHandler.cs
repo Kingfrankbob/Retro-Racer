@@ -10,8 +10,6 @@ namespace Retro_Racer
         private int _trackWidth;
         private int _cMidX;
         private int _cMidY;
-        public int x;
-        public int y;
         public trackHandler(string[,] track, int consoleHeight, int consoleWidth)
         {
             currentTrack = track;
@@ -46,13 +44,10 @@ namespace Retro_Racer
             var crashStartX = midx - 1;
             var crashStartY = midy - 1;
 
-            x = midx;
-            y = midy;
-
             var xcounter = startx;
             var ycounter = starty;
 
-            var crashCoutnerX = crashStartX;
+            var crashCounterX = crashStartX;
             var crashCounterY = crashStartY;
 
 
@@ -97,14 +92,14 @@ namespace Retro_Racer
                     Console.BackgroundColor = ConsoleColor.Black;
                     Console.SetCursorPosition(76 + j, 25 + i);
                     System.Console.WriteLine(' ');
-                    if (currentTrack[crashCounterY, crashCoutnerX] == "Wall")
+                    if (currentTrack[crashCounterY, crashCounterX] == "Wall")
                     {
                         Racer.Crash();
                     }
-                    crashCoutnerX++;
+                    crashCounterX++;
                 }
                 crashCounterY++;
-                crashCoutnerX = crashStartX;
+                crashCounterX = crashStartX;
             }
 
         }

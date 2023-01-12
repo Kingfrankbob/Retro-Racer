@@ -1,5 +1,6 @@
 ﻿using System.IO;
 using System.Threading;
+using System.Runtime.InteropServices;
 
 namespace Retro_Racer
 {
@@ -14,19 +15,25 @@ namespace Retro_Racer
         {
 
             Console.Clear();
-            Console.SetWindowSize(151, 51);
-            Console.SetBufferSize(151, 51);  // 76 is mid x point, 25 is mid y point
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            {
+                Console.SetWindowSize(151, 51);
+                Console.SetBufferSize(151, 51);  // 76 is mid x point, 25 is mid y point
+            }
+
+            System.Console.WriteLine(RuntimeInformation.OSDescription);
 
 
-
-            // Console.WriteLine("REMEMBER, to exit press ctrl + c keys at the same time!!!");
-            // Thread.Sleep(1000);
-            // titleRefrence.showCreds();
-            // Thread.Sleep(1000);
-            // titleRefrence.showGameTitle();
-            // Thread.Sleep(1000);
+            Console.WriteLine("REMEMBER, to exit press ctrl + c keys at the same time!!!");
+            Console.WriteLine("CONVERSION DOES NOT WORK ON LINUX ATM!!!");
+            Thread.Sleep(1000);
+            titleRefrence.showCreds();
+            Thread.Sleep(750);
+            titleRefrence.showGameTitle();
+            Thread.Sleep(750);
 
             var selection = Title();
+            // var selection = 9;
 
             switch (selection)
             {

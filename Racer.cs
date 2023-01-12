@@ -6,7 +6,7 @@ namespace Retro_Racer
         private double _y;
         private double _speed;
         private int _direction;
-        private int _prevDir;
+        // private int _prevDir;
         private int _maxSpeed { get; set; }
         private double _acceleration;
 
@@ -142,24 +142,7 @@ namespace Retro_Racer
             // _prevDir = _direction;
 
         }
-        public void checkCrash(trackHandler trackHandlerC)
-        {
-            var startx = trackHandlerC.x - 3;
-            var starty = trackHandlerC.y - 3;
 
-            var curRacerSprite = RacerSprites.racerSpriteC(_direction);
-
-            for (int i = 0; i < 7; i++)
-                for (int j = 0; j < 7; j++)
-                {
-                    if (trackHandlerC.getTrackSection(starty + i, startx + j) == "Wall")
-                    {
-                        Crash();
-                    }
-                }
-
-
-        }
         public static void Crash()
         {
             Console.BackgroundColor = ConsoleColor.DarkGray;

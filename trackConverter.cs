@@ -4,6 +4,8 @@ using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using System.Runtime.InteropServices;
+
 
 namespace Retro_Racer
 {
@@ -15,9 +17,16 @@ namespace Retro_Racer
             Console.BackgroundColor = ConsoleColor.Black;
             Console.ForegroundColor = ConsoleColor.White;
             Console.Clear();
+
             string pathToCurrent = Directory.GetCurrentDirectory();
-            string targetPath = pathToCurrent + "\\input";
-            var info = new DirectoryInfo(pathToCurrent + "\\input");
+            string targetPath = "";
+
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows)) targetPath = "\\input";
+            else targetPath = "\\input";
+
+            var info = new DirectoryInfo(pathToCurrent + targetPath);
+
+
             var fileInfo = info.GetFiles();
             var fileCounter = 0;
             var totalFiles = info.EnumerateFiles().Count();
