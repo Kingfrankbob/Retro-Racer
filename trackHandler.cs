@@ -10,6 +10,8 @@ namespace Retro_Racer
         private int _trackWidth;
         private int _cMidX;
         private int _cMidY;
+        private int _sMidX;
+        private int _sMidY;
         public trackHandler(string[,] track, int consoleHeight, int consoleWidth)
         {
             currentTrack = track;
@@ -19,6 +21,21 @@ namespace Retro_Racer
             _trackWidth = track.GetLength(1);
             _cMidX = (consoleWidth / 2);
             _cMidY = (consoleHeight / 2);
+            var itemX = 0L;
+            foreach (var item in trackReference.Track1StartX)
+            {
+                itemX += item;
+            }
+            itemX /= trackReference.Track1StartX.Length;
+            _sMidX = (int)itemX;
+            var itemY = 0L;
+            foreach (var item in trackReference.Track1StartY)
+            {
+                itemY += item;
+            }
+            itemY /= trackReference.Track1StartX.Length;
+            _sMidY = (int)itemY;
+
         }
 
         public void drawTrackSection(int x, int y, int midx, int midy)
@@ -49,8 +66,6 @@ namespace Retro_Racer
 
             var crashCounterX = crashStartX;
             var crashCounterY = crashStartY;
-
-
 
             for (int i = 0; i < _height - 1; i++)
             {
@@ -106,6 +121,20 @@ namespace Retro_Racer
         public string getTrackSection(int x, int y)
         {
             return currentTrack[y, x];
+        }
+        public int StartX
+        {
+            get
+            {
+                return _sMidX;
+            }
+        }
+        public int StartY
+        {
+            get
+            {
+                return _sMidY;
+            }
         }
 
     }

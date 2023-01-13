@@ -94,7 +94,7 @@ namespace Retro_Racer
         {
 
             var trackHandlerC = new trackHandler(trackReference.Track1, Console.BufferHeight, Console.BufferWidth);
-            var curRacer = new Racer(35000, 25000); // Middle of screen
+            var curRacer = new Racer(trackHandlerC.StartX * 100, trackHandlerC.StartY * 100); // Middle of screen
 
             while (true)
             {
