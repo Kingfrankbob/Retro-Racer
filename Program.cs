@@ -7,9 +7,6 @@ namespace Retro_Racer
     class Program
     {
         /*
-            Another thing to note: When you go you have to move in the X direction first??????????????????? then the Y dir does not mess up like it ahs previously
-
-
         */
         public static void Main(string[] args) // 128x128 = 16384 total entries
         {
@@ -34,6 +31,8 @@ namespace Retro_Racer
 
             var selection = Title();
             // var selection = 9;
+
+            // Font.print(0, 0, "h");
 
             switch (selection)
             {
