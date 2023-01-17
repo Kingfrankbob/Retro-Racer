@@ -5,7 +5,7 @@ I was wanting to build something else in the console after my ish- pingpong game
 ### Prebuilt:
 Go to the most recent Release or Pre-Release and download the files, extract the zip and run the exe. As long as you have dotnet 7.0.1 installed you should be fine.
 ### To build:
-Clone the repo, and then navigate to the folder via the Windows Powershell, (ANY VERSION OF POWERSHELL IN THE TERMINAL APPLICATION WILL NOT WORK!!!).
+Clone the repo, and then navigate to the folder via the Windows Powershell, (ANY VERSION OF POWERSHELL IN THE TERMINAL APPLICATION WILL NOT WORK!!!). <br>
 From there you should be able to dotnet build, and then dotnet run and do it yourself. Its a lot easier to download the exe so thats my personal opinion.
 ## Other Cool Stuff:
 ### Credits:
@@ -13,17 +13,17 @@ Mainly my Cousin who has helped me learn c# from the beginning. It is nice to he
 
 ## Dev Notes:
 ### Current Working Functions
-track converter, converting c arrays from piskelapp.com
-scrolling with the moving racer
-Title, credits and other screens
+track converter, converting c arrays from piskelapp.com <br>
+scrolling with the moving racer <br>
+Title, credits and other screens <br>
 
 ### TODO
-linking everything together and building all the parts together // WIP
+linking everything together and building all the parts together // WIP <br>
 
 ### FIXED
-Graphical Line bugs. 
-Add crash collision in the track handler.
-Need to resize credits, and prod screenz.
+Graphical Line bugs. <br>
+Add crash collision in the track handler. <br>
+Need to resize credits, and prod screenz. <br>
 
 # Have Fun Racing!!!
 
