@@ -439,161 +439,211 @@ namespace Retro_Racer
         {
             var length = text.Length;
             // for (int Letter = 0; Letter < length; Letter++)
-            for (var i = 0; i < A.GetLength(0); i++)
+            for (var i = 0; i < length; i++)
             {
-                y += 1;
-                int t = x;
-                for (var j = 0; j < A.GetLength(1); j++)
-                {
-                    t += 1;
-                    if (a[i, j] == 1)
-                    {
-                        Console.SetCursorPosition(x + t, y);
-                        Console.BackgroundColor = ConsoleColor.DarkGreen;
-                        Console.Write(" ");
+                var Cur = text[i];
 
-                        //   sand->setPixel(x + t, y);     
-
-                    }
-                }
+                printLetter((i * 3) + x, y, Cur);
 
             }
         }
+        private static void printLetter(int x, int y, char Letter)
+        {
+            for (var h = 0; h < 7; h++)
+            {
+                y++;
+                int xxx = x;
+                for (var j = 0; j < 5; j++)
+                {
+                    xxx++;
+                    Console.BackgroundColor = ConsoleColor.DarkGreen;
+                    switch (Letter)
+                    {
+                        case 'a':
+                            if (a[h, j] == 1)
+                            {
+                                Console.SetCursorPosition(x + xxx, y);
+                                Console.Write(" ");
+                            }
+                            break;
+                        case 'b':
+                            if (b[h, j] == 1)
+                            {
+                                Console.SetCursorPosition(x + xxx, y);
+                                Console.Write(" ");
+                            }
+                            break;
+                        case 'c':
+                            if (c[h, j] == 1)
+                            {
+                                Console.SetCursorPosition(x + xxx, y);
+                                Console.Write(" ");
+                            }
+                            break;
+                        case 'd':
+                            if (d[h, j] == 1)
+                            {
+                                Console.SetCursorPosition(x + xxx, y);
+                                Console.Write(" ");
+                            }
+                            break;
+                        case 'e':
+                            if (e[h, j] == 1)
+                            {
+                                Console.SetCursorPosition(x + xxx, y);
+                                Console.Write(" ");
+                            }
+                            break;
+                        case 'f':
+                            if (f[h, j] == 1)
+                            {
+                                Console.SetCursorPosition(x + xxx, y);
+                                Console.Write(" ");
+                            }
+                            break;
+                        case 'g':
+                            if (g[h, j] == 1)
+                            {
+                                Console.SetCursorPosition(x + xxx, y);
+                                Console.Write(" ");
+                            }
+                            break;
+                        case 'h':
+                            if (hh[h, j] == 1)
+                            {
+                                Console.SetCursorPosition(x + xxx, y);
+                                Console.Write(" ");
+                            }
+                            break;
+                        case 'i':
+                            if (i[h, j] == 1)
+                            {
+                                Console.SetCursorPosition(x + xxx, y);
+                                Console.Write(" ");
+                            }
+                            break;
+                        case 'j':
+                            if (jj[h, j] == 1)
+                            {
+                                Console.SetCursorPosition(x + xxx, y);
+                                Console.Write(" ");
+                            }
+                            break;
+                        case 'k':
+                            if (k[h, j] == 1)
+                            {
+                                Console.SetCursorPosition(x + xxx, y);
+                                Console.Write(" ");
+                            }
+                            break;
+                        case 'l':
+                            if (l[h, j] == 1)
+                            {
+                                Console.SetCursorPosition(x + xxx, y);
+                                Console.Write(" ");
+                            }
+                            break;
+                        case 'm':
+                            if (m[h, j] == 1)
+                            {
+                                Console.SetCursorPosition(x + xxx, y);
+                                Console.Write(" ");
+                            }
+                            break;
+                        case 'n':
+                            if (n[h, j] == 1)
+                            {
+                                Console.SetCursorPosition(x + xxx, y);
+                                Console.Write(" ");
+                            }
+                            break;
+                        case 'o':
+                            if (o[h, j] == 1)
+                            {
+                                Console.SetCursorPosition(x + xxx, y);
+                                Console.Write(" ");
+                            }
+                            break;
+                        case 'p':
+                            if (p[h, j] == 1)
+                            {
+                                Console.SetCursorPosition(x + xxx, y);
+                                Console.Write(" ");
+                            }
+                            break;
+                        case 'q':
+                            if (q[h, j] == 1)
+                            {
+                                Console.SetCursorPosition(x + xxx, y);
+                                Console.Write(" ");
+                            }
+                            break;
+                        case 'r':
+                            if (r[h, j] == 1)
+                            {
+                                Console.SetCursorPosition(x + xxx, y);
+                                Console.Write(" ");
+                            }
+                            break;
+                        case 's':
+                            if (s[h, j] == 1)
+                            {
+                                Console.SetCursorPosition(x + xxx, y);
+                                Console.Write(" ");
+                            }
+                            break;
+                        case 't':
+                            if (t[h, j] == 1)
+                            {
+                                Console.SetCursorPosition(x + xxx, y);
+                                Console.Write(" ");
+                            }
+                            break;
+                        case 'u':
+                            if (u[h, j] == 1)
+                            {
+                                Console.SetCursorPosition(x + xxx, y);
+                                Console.Write(" ");
+                            }
+                            break;
+                        case 'v':
+                            if (v[h, j] == 1)
+                            {
+                                Console.SetCursorPosition(x + xxx, y);
+                                Console.Write(" ");
+                            }
+                            break;
+                        case 'w':
+                            if (w[h, j] == 1)
+                            {
+                                Console.SetCursorPosition(x + xxx, y);
+                                Console.Write(" ");
+                            }
+                            break;
+                        case 'x':
+                            if (xx[h, j] == 1)
+                            {
+                                Console.SetCursorPosition(x + xxx, y);
+                                Console.Write(" ");
+                            }
+                            break;
+                        case 'y':
+                            if (yy[h, j] == 1)
+                            {
+                                Console.SetCursorPosition(x + xxx, y);
+                                Console.Write(" ");
+                            }
+                            break;
+                        case 'z':
+                            if (z[h, j] == 1)
+                            {
+                                Console.SetCursorPosition(x + xxx, y);
+                                Console.Write(" ");
+                            }
+                            break;
+                    }
+                }
+            }
+        }
     }
-
-
-
-    // switch (text[Letter])
-    // {
-    //     case 'a':
-    //         if (a[h, j] == 1)
-    //             Console.SetCursorPosition(x + j + Letter * 5, y + h);
-    //         Console.Write("X");
-    //         break;
-    //     case 'b':
-    //         if (b[h, j] == 1)
-    //             Console.SetCursorPosition(x + j + Letter * 5, y + h);
-    //         Console.Write("X");
-    //         break;
-    //     case 'c':
-    //         if (c[h, j] == 1)
-    //             Console.SetCursorPosition(x + j + Letter * 5, y + h);
-    //         Console.Write("X");
-    //         break;
-    //     case 'd':
-    //         if (d[h, j] == 1)
-    //             Console.SetCursorPosition(x + j + Letter * 5, y + h);
-    //         Console.Write("X");
-    //         break;
-    //     case 'e':
-    //         if (e[h, j] == 1)
-    //             Console.SetCursorPosition(x + j + Letter * 5, y + h);
-    //         Console.Write("X");
-    //         break;
-    //     case 'f':
-    //         if (f[h, j] == 1)
-    //             Console.SetCursorPosition(x + j + Letter * 5, y + h);
-    //         Console.Write("X");
-    //         break;
-    //     case 'g':
-    //         if (g[h, j] == 1)
-    //             Console.SetCursorPosition(x + j + Letter * 5, y + h);
-    //         Console.Write("X");
-    //         break;
-    //     case 'h':
-    //         if (hh[h, j] == 1)
-    //             Console.SetCursorPosition(x + j + Letter * 5, y + h);
-    //         Console.Write("X");
-    //         break;
-    //     case 'i':
-    //         if (i[h, j] == 1)
-    //             Console.SetCursorPosition(x + j + Letter * 5, y + h);
-    //         Console.Write("X");
-    //         break;
-    //     case 'j':
-    //         if (jj[h, j] == 1)
-    //             Console.SetCursorPosition(x + j + Letter * 5, y + h);
-    //         Console.Write("X");
-    //         break;
-    //     case 'k':
-    //         if (k[h, j] == 1)
-    //             Console.SetCursorPosition(x + j + Letter * 5, y + h);
-    //         Console.Write("X");
-    //         break;
-    //     case 'l':
-    //         if (l[h, j] == 1)
-    //             Console.SetCursorPosition(x + j + Letter * 5, y + h);
-    //         Console.Write("X");
-    //         break;
-    //     case 'm':
-    //         if (m[h, j] == 1)
-    //             Console.SetCursorPosition(x + j + Letter * 5, y + h);
-    //         Console.Write("X");
-    //         break;
-    //     case 'n':
-    //         if (n[h, j] == 1)
-    //             Console.SetCursorPosition(x + j + Letter * 5, y + h);
-    //         Console.Write("X");
-    //         break;
-    //     case 'o':
-    //         if (o[h, j] == 1)
-    //             Console.SetCursorPosition(x + j + Letter * 5, y + h);
-    //         Console.Write("X");
-    //         break;
-    //     case 'p':
-    //         if (p[h, j] == 1)
-    //             Console.SetCursorPosition(x + j + Letter * 5, y + h);
-    //         Console.Write("X");
-    //         break;
-    //     case 'q':
-    //         if (q[h, j] == 1)
-    //             Console.SetCursorPosition(x + j + Letter * 5, y + h);
-    //         Console.Write("X");
-    //         break;
-    //     case 'r':
-    //         if (r[h, j] == 1)
-    //             Console.SetCursorPosition(x + j + Letter * 5, y + h);
-    //         Console.Write("X");
-    //         break;
-    //     case 's':
-    //         if (s[h, j] == 1)
-    //             Console.SetCursorPosition(x + j + Letter * 5, y + h);
-    //         Console.Write("X");
-    //         break;
-    //     case 't':
-    //         if (t[h, j] == 1)
-    //             Console.SetCursorPosition(x + j + Letter * 5, y + h);
-    //         Console.Write("X");
-    //         break;
-    //     case 'u':
-    //         if (u[h, j] == 1)
-    //             Console.SetCursorPosition(x + j + Letter * 5, y + h);
-    //         Console.Write("X");
-    //         break;
-    //     case 'v':
-    //         if (v[h, j] == 1)
-    //             Console.SetCursorPosition(x + j + Letter * 5, y + h);
-    //         Console.Write("X");
-    //         break;
-    //     case 'w':
-    //         if (w[h, j] == 1)
-    //             Console.SetCursorPosition(x + j + Letter * 5, y + h);
-    //         Console.Write("X");
-    //         break;
-    //     case 'x':
-    //         if (xx[h, j] == 1)
-    //             Console.SetCursorPosition(x + j + Letter * 5, y + h);
-    //         Console.Write("X");
-    //         break;
-    //     case 'y':
-    //         if (yy[h, j] == 1)
-    //             Console.SetCursorPosition(x + j + Letter * 5, y + h);
-    //         Console.Write("X");
-    //         break;
-    //     case 'z':
-    //         if (z[h, j] == 1)
-    //             Console.SetCursorPosition(x + j + Letter * 5, y + h);
-    //         Console.Write("X");
-    //         break;
-
 }
