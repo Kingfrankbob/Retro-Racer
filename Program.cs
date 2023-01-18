@@ -30,6 +30,7 @@ namespace Retro_Racer
             Thread.Sleep(750);
 
             var selection = Title();
+
             // var selection = 9;
 
             // Font.print(0, 0, "h");
@@ -37,7 +38,7 @@ namespace Retro_Racer
             switch (selection)
             {
                 case 1:
-                    startGame();
+                    setGame();
                     break;
                 case 2:
                     trackConverter.convertTrack();
@@ -89,11 +90,20 @@ namespace Retro_Racer
             }
         }
 
-        public static void startGame()
+        public static void setGame()
+        {
+            var handSet = new settingsHandler();
+
+            handSet.handleSettings();
+
+            startGame(handSet.TrackSelection, handSet.Accel, handSet.MaxSpeed);
+        }
+
+        public static void startGame(string Track, double accel, int maxSpeed)
         {
 
             var trackHandlerC = new trackHandler(trackReference.Track1, Console.BufferHeight, Console.BufferWidth);
-            var curRacer = new Racer(trackHandlerC.StartX * 100, trackHandlerC.StartY * 100); // Middle of screen
+            var curRacer = new Racer(trackHandlerC.StartX * 100, trackHandlerC.StartY * 100, accel, maxSpeed); // Middle of screen
 
             while (true)
             {

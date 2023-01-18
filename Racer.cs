@@ -19,7 +19,16 @@ namespace Retro_Racer
             _direction = 1;
             _maxSpeed = 50;
             _acceleration = 1.53;
+        }
 
+        public Racer(int startX, int startY, double Accel, int MXspeed)
+        {
+            _x = startX;
+            _y = startY;
+            _speed = 0;
+            _direction = 1;
+            _maxSpeed = MXspeed;
+            _acceleration = Accel;
         }
 
         public void accelerate()
