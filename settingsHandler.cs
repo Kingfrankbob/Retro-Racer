@@ -10,6 +10,9 @@ namespace Retro_Racer
         private int _speed;
         private string _trackSelection = "";
 
+        private string[,] previousShow = new string[51, 151];
+
+
         public void handleSettings()
         {
             int choice = 0;
@@ -66,7 +69,6 @@ namespace Retro_Racer
                 showSelect(choice);
             }
         }
-        private string[,] previousShow = new string[51, 151];
 
         public void showSelect(int choice)
         {
