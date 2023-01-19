@@ -435,13 +435,111 @@ namespace Retro_Racer
                            {0, 1, 0, 0, 0},
                            {0, 1, 1, 1, 0}  };
 
-        public static int[,] z = new int[,] {  {0, 0, 0, 0, 0},
+        public static int[,] space = new int[,] {  {0, 0, 0, 0, 0},
                            {0, 0, 0, 0, 0},
-                           {0, 1, 1, 1, 0},
+                           {0, 0, 0, 0, 0},
+                           {0, 0, 0, 0, 0},
+                           {0, 0, 0, 0, 0},
+                           {0, 0, 0, 0, 0},
+                           {0, 0, 0, 0, 0}  };
+
+        public static int[,] hyphen = new int[,] {  {0, 0, 0, 0, 0},
+                           {0, 0, 0, 0, 0},
+                           {0, 0, 0, 0, 0},
+                           {1, 1, 1, 1, 1},
+                           {0, 0, 0, 0, 0},
+                           {0, 0, 0, 0, 0},
+                           {0, 0, 0, 0, 0}  };
+
+        public static int[,] underscore = new int[,] {  {0, 0, 0, 0, 0},
+                           {0, 0, 0, 0, 0},
+                           {0, 0, 0, 0, 0},
+                           {0, 0, 0, 0, 0},
+                           {0, 0, 0, 0, 0},
+                           {0, 0, 0, 0, 0},
+                           {1, 1, 1, 1, 1}  };
+
+        public static int[,] one = new int[,] {  {0, 0, 0, 0, 0},
+                           {0, 0, 1, 0, 0},
+                           {0, 1, 1, 0, 0},
+                           {0, 0, 1, 0, 0},
+                           {0, 0, 1, 0, 0},
+                           {0, 0, 1, 0, 0},
+                           {0, 1, 1, 1, 0}  };
+
+        public static int[,] two = new int[,] {  {0, 0, 0, 0, 0},
+                           {0, 0, 1, 0, 0},
+                           {0, 1, 0, 1, 0},
                            {0, 0, 0, 1, 0},
                            {0, 0, 1, 0, 0},
                            {0, 1, 0, 0, 0},
                            {0, 1, 1, 1, 0}  };
+
+        public static int[,] tre = new int[,] {  {0, 0, 0, 0, 0},
+                           {0, 1, 1, 0, 0},
+                           {0, 0, 0, 1, 0},
+                           {0, 1, 1, 0, 0},
+                           {0, 0, 0, 1, 0},
+                           {0, 0, 0, 1, 0},
+                           {0, 1, 1, 0, 0}  };
+
+        public static int[,] frr = new int[,] {  {0, 0, 0, 0, 0},
+                           {0, 1, 0, 1, 0},
+                           {0, 1, 0, 1, 0},
+                           {0, 1, 1, 1, 0},
+                           {0, 0, 0, 1, 0},
+                           {0, 0, 0, 1, 0},
+                           {0, 0, 0, 1, 0}  };
+
+        public static int[,] fve = new int[,] {  {0, 0, 0, 0, 0},
+                           {0, 1, 1, 1, 0},
+                           {0, 1, 0, 0, 0},
+                           {0, 1, 1, 0, 0},
+                           {0, 0, 0, 1, 0},
+                           {0, 1, 0, 1, 0},
+                           {0, 0, 1, 0, 0}  };
+
+
+
+        public static int[,] six = new int[,] {  {0, 0, 0, 0, 0},
+                           {0, 1, 1, 1, 0},
+                           {0, 1, 0, 1, 0},
+                           {0, 1, 0, 0, 0},
+                           {0, 1, 1, 1, 0},
+                           {0, 1, 0, 1, 0},
+                           {0, 1, 1, 1, 0}  };
+
+        public static int[,] svn = new int[,] {  {0, 0, 0, 0, 0},
+                           {0, 1, 1, 1, 0},
+                           {0, 0, 0, 1, 0},
+                           {0, 0, 0, 1, 0},
+                           {0, 0, 1, 0, 0},
+                           {0, 0, 1, 0, 0},
+                           {0, 0, 1, 0, 0}  };
+
+        public static int[,] eht = new int[,] {  {0, 0, 1, 0, 0},
+                           {0, 1, 0, 1, 0},
+                           {0, 1, 0, 1, 0},
+                           {0, 0, 1, 0, 0},
+                           {0, 1, 0, 1, 0},
+                           {0, 1, 0, 1, 0},
+                           {0, 0, 1, 0, 0}  };
+
+        public static int[,] nin = new int[,] {  {0, 0, 0, 0, 0},
+                           {0, 1, 1, 1, 0},
+                           {0, 1, 0, 1, 0},
+                           {0, 1, 1, 1, 0},
+                           {0, 0, 0, 1, 0},
+                           {0, 0, 0, 1, 0},
+                           {0, 1, 1, 0, 0}  };
+
+        public static int[,] zro = new int[,] {  {0, 0, 0, 0, 0},
+                           {0, 0, 1, 0, 0},
+                           {0, 1, 0, 1, 0},
+                           {0, 1, 0, 1, 0},
+                           {0, 1, 0, 1, 0},
+                           {0, 1, 0, 1, 0},
+                           {0, 0, 1, 1, 0}  };
 
         public static Dictionary<char, int[,]> Letters = new Dictionary<char, int[,]>
         {
@@ -450,49 +548,58 @@ namespace Retro_Racer
             // Uppercase
             {'A', A},{'B', B},{'C', C},{'D', D},{'E', E},{'F', F},{'G', G},{'H', H},{'I', I},{'J', J},{'K', K},{'L', L},{'M', M},{'N', N},{'O', O},{'P', P},{'Q', Q},{'R', R},{'S', S},{'T', T},{'U', U},{'V', V},{'W', W},{'X', X},{'Y', Y},{'Z', Z},
             // Misc
-            {' ', space}
+            {' ', space}, {'-', hyphen}, {'_', underscore},
             // Numbers
-    };
+            {'0', zro}, {'1', one}, {'2', two}, {'3', tre}, {'4', frr}, {'5', fve}, {'6', six}, {'7', svn}, {'8', eht}, {'9', nin}
+        };
+
         public static void print(int x, int y, string text)
         {
             var length = text.Length;
-            // for (int Letter = 0; Letter < length; Letter++) 
             for (var i = 0; i < length; i++)
             {
                 var Cur = text[i];
-                var addedNotation = 0;
-
-                // try
-                // {
-                // if (char.IsUpper(Cur)) addedNotation = i * 5;
-                // else addedNotation = i * 3;
-                addedNotation = i * 5;
-                // }
-                // catch (Exception e)
-                // {
-                //     Console.WriteLine("Character cannot be Upper or Lower, Error ->" + e);
-                // }
-
-                printLetter(addedNotation + x, y, Cur);
+                printChar((i * 5) + x, y, Cur);
             }
         }
-        private static void printLetter(int x, int y, char Letter)
+
+        public static void printHighlight(int x, int y, string text)
         {
-            var currentLetter = Letters[Letter];
+            var length = text.Length;
+            for (int j = y; j < y + 7; j++)
+            {
+                for (int i = x; i < x + (length * 5); i++)
+                {
+                    Console.BackgroundColor = ConsoleColor.White;
+                    Console.SetCursorPosition(i, j);
+                    Console.Write(" ");
+                }
+            }
+
+            for (var i = 0; i < length; i++)
+            {
+                var Cur = text[i];
+                printChar((i * 5) + x, y, Cur, ConsoleColor.DarkRed);
+            }
+        }
+
+        private static void printChar(int x, int y, char curChar, ConsoleColor color = ConsoleColor.DarkGreen)
+        {
+            var currentLetter = Letters[curChar];
             for (var h = 0; h < 7; h++)
             {
-                y++;
                 int xxx = x;
                 for (var j = 0; j < 5; j++)
                 {
                     xxx++;
-                    Console.BackgroundColor = ConsoleColor.DarkGreen;
+                    Console.BackgroundColor = color;
                     if (currentLetter[h, j] == 1)
                     {
                         Console.SetCursorPosition(xxx, y);
                         Console.Write(" ");
                     }
                 }
+                y++;
             }
         }
     }

@@ -72,55 +72,18 @@ namespace Retro_Racer
 
         public void showSelect(int choice)
         {
-            bool highLight = false;
-            var currentTrack = new string[,] { };
+            string highLight = ("false", "false", "false");
             switch (choice)
             {
-                case 0: { currentTrack = settingsRefrence.TrackSelect; highLight = false; } break;
-                case 1: { currentTrack = settingsRefrence.SpeedSelect; highLight = false; } break;
-                case 2: { currentTrack = settingsRefrence.Start; highLight = true; } break;
+                case 0: { highLight.Item1 = true; highLight.Item2 = "false"; highLight.Item3 = "false"; } break;
+                case 1: { highLight.Item1 = "false"; highLight.Item2 = true; highLight.Item3 = "false"; } break;
+                case 2: { highLight.Item1 = "false"; highLight.Item2 = "false"; highLight.Item3 = true; } break;
             }
 
-            for (int i = 0; i < 50; i++)
-            {
-                for (int j = 0; j < 151; j++)
-                {
-                    if (previousShow[i, j] != currentTrack[i, j])
-                    {
-                        Console.SetCursorPosition(j, i);
-                        Console.BackgroundColor = ConsoleColor.DarkBlue;
-                        Console.Write(' ');
-                        Console.SetCursorPosition(j, i);
-                        // Console.Write(currentTrack[i, j]);
-                        switch (currentTrack[i, j])
-                        {
-                            case "Track":
-                                Console.BackgroundColor = ConsoleColor.DarkYellow;
-                                break;
-                            case "Grass":
-                                Console.BackgroundColor = ConsoleColor.Green;
-                                break;
-                            case "Wall":
-                                Console.BackgroundColor = ConsoleColor.Black;
-                                break;
-                            case "Unknown":
-                                Console.BackgroundColor = ConsoleColor.DarkCyan;
-                                break;
-                        }
-                        Console.Write(' ');
-                        previousShow[i, j] = currentTrack[i, j];
-
-                    }
-                }
-                Console.BackgroundColor = ConsoleColor.Black;
-                Console.ForegroundColor = ConsoleColor.White;
-                Console.SetCursorPosition(0, 0);
-            }
-            Console.BackgroundColor = ConsoleColor.Black;
-            Console.ForegroundColor = ConsoleColor.White;
-            Console.SetCursorPosition(0, 0);
-            if (highLight) System.Console.WriteLine("Yes");
-            else Font.print(50, 20, "start");
+            if (highLight.Item1) { Font.printHighlight(2, 2, "Track Selection"); Font.print(2, 16, "Speed Selection"); Font.print(2, 30, "Start Game"); }
+            else if (highLight.Item2) { Font.print(2, 2, "Track Selection"); Font.printHighlight(2, 16, "Speed Selection"); Font.print(2, 30, "Start Game"); }
+            else if (highLight.Item3) { Font.print(2, 2, "Track Selection"); Font.print(2, 16, "Speed Selection"); Font.printHighlight(2, 30, "Start Game"); }
+            else { System.Console.WriteLine("Error, should not make it here.../nPlease stop messing with the code :rofl: :lmao:\nError -> SystemInvalidBoolOperator\nCannot recognize \"Broken\" as a value."); }
         }
 
         public void handleTracks()

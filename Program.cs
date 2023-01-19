@@ -30,14 +30,15 @@ namespace Retro_Racer
 
             // var selection = Title();
 
-            var selection = 69;
+            // var selection = 69;
 
-            Font.print(0, 0, "Hello World, this is a test of the font class");
+            // Font.print(0, 0, "Hello World");
+            // Font.printHighlight(0, 8, "Hello World");
 
             // switch (selection)
             // {
             //     case 1:
-            //         setGame();
+            setGame();
             //         break;
             //     case 2:
             //         trackConverter.convertTrack();
@@ -48,8 +49,6 @@ namespace Retro_Racer
             Console.WriteLine("Don't know why your here? GLHF {0}", selection);
 
         }
-
-
 
         public static int Title()
         {
