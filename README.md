@@ -1,6 +1,6 @@
 # Retro-Racer
 ## Why? 
-I was wanting to build something else in the console after my ish- pingpong game. To my surprise it stuck me when I thought of the games I had played recently. Racing, Spy hunter, classics. I wanted to be the first or at least among the fwe who have created a graphical racing game in the console. At the time of writing this it is very terrible, but it is a work of art to me!
+I was wanting to build something else in the console after my ish- pingpong game. To my surprise it stuck me when I thought of the games I had played recently. Racing, Spy hunter, classics. I wanted to be the first or at least among the few who have created a graphical racing game in the console. At the time of writing this it is very terrible, but it is a work of art to me!
 ## HOWTO
 ### Prebuilt:
 Go to the most recent Release or Pre-Release and download the files, extract the zip and run the exe. As long as you have dotnet 7.0.1 installed you should be fine.
