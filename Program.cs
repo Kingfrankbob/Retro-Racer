@@ -17,8 +17,7 @@ namespace Retro_Racer
                 Console.SetWindowSize(151, 51);
                 Console.SetBufferSize(151, 51);  // 76 is mid x point, 25 is mid y point
             }
-
-            System.Console.WriteLine(RuntimeInformation.OSDescription);
+            else System.Console.WriteLine(RuntimeInformation.OSDescription);
 
 
             // Console.WriteLine("REMEMBER, to exit press ctrl + c keys at the same time!!!");
@@ -29,21 +28,21 @@ namespace Retro_Racer
             // titleRefrence.showGameTitle();
             // Thread.Sleep(750);
 
-            var selection = Title();
+            // var selection = Title();
 
-            // var selection = 69;
+            var selection = 69;
 
-            // Font.print(0, 0, "hello");
+            Font.print(0, 0, "Hello World, this is a test of the font class");
 
-            switch (selection)
-            {
-                case 1:
-                    setGame();
-                    break;
-                case 2:
-                    trackConverter.convertTrack();
-                    break;
-            }
+            // switch (selection)
+            // {
+            //     case 1:
+            //         setGame();
+            //         break;
+            //     case 2:
+            //         trackConverter.convertTrack();
+            //         break;
+            // }
 
             Console.BackgroundColor = ConsoleColor.Black;
             Console.WriteLine("Don't know why your here? GLHF {0}", selection);

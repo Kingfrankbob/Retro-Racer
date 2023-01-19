@@ -435,10 +435,24 @@ namespace Retro_Racer
                            {0, 1, 0, 0, 0},
                            {0, 1, 1, 1, 0}  };
 
+        public static int[,] z = new int[,] {  {0, 0, 0, 0, 0},
+                           {0, 0, 0, 0, 0},
+                           {0, 1, 1, 1, 0},
+                           {0, 0, 0, 1, 0},
+                           {0, 0, 1, 0, 0},
+                           {0, 1, 0, 0, 0},
+                           {0, 1, 1, 1, 0}  };
+
         public static Dictionary<char, int[,]> Letters = new Dictionary<char, int[,]>
         {
-            {'a', a},{'b', b},{'c', c},{'d', d},{'e', e},{'f', f},{'g', g},{'h', hh},{'i', i},{'j', jj},{'k', k},{'l', l},{'m', m},{'n', n},{'o', o},{'p', p},{'q', q},{'r', r},{'s', s},{'t', t},{'u', u},{'v', v},{'w', w},{'x', xx},{'y', yy},{'z', z}
-        };
+            // Lowercase
+            {'a', a},{'b', b},{'c', c},{'d', d},{'e', e},{'f', f},{'g', g},{'h', hh},{'i', i},{'j', jj},{'k', k},{'l', l},{'m', m},{'n', n},{'o', o},{'p', p},{'q', q},{'r', r},{'s', s},{'t', t},{'u', u},{'v', v},{'w', w},{'x', xx},{'y', yy},{'z', z},
+            // Uppercase
+            {'A', A},{'B', B},{'C', C},{'D', D},{'E', E},{'F', F},{'G', G},{'H', H},{'I', I},{'J', J},{'K', K},{'L', L},{'M', M},{'N', N},{'O', O},{'P', P},{'Q', Q},{'R', R},{'S', S},{'T', T},{'U', U},{'V', V},{'W', W},{'X', X},{'Y', Y},{'Z', Z},
+            // Misc
+            {' ', space}
+            // Numbers
+    };
         public static void print(int x, int y, string text)
         {
             var length = text.Length;
@@ -446,13 +460,25 @@ namespace Retro_Racer
             for (var i = 0; i < length; i++)
             {
                 var Cur = text[i];
+                var addedNotation = 0;
 
-                printLetter((i * 3) + x, y, Cur);
+                // try
+                // {
+                // if (char.IsUpper(Cur)) addedNotation = i * 5;
+                // else addedNotation = i * 3;
+                addedNotation = i * 5;
+                // }
+                // catch (Exception e)
+                // {
+                //     Console.WriteLine("Character cannot be Upper or Lower, Error ->" + e);
+                // }
 
+                printLetter(addedNotation + x, y, Cur);
             }
         }
         private static void printLetter(int x, int y, char Letter)
         {
+            var currentLetter = Letters[Letter];
             for (var h = 0; h < 7; h++)
             {
                 y++;
@@ -461,190 +487,10 @@ namespace Retro_Racer
                 {
                     xxx++;
                     Console.BackgroundColor = ConsoleColor.DarkGreen;
-                    switch (Letter)
+                    if (currentLetter[h, j] == 1)
                     {
-                        case 'a':
-                            if (a[h, j] == 1)
-                            {
-                                Console.SetCursorPosition(x + xxx, y);
-                                Console.Write(" ");
-                            }
-                            break;
-                        case 'b':
-                            if (b[h, j] == 1)
-                            {
-                                Console.SetCursorPosition(x + xxx, y);
-                                Console.Write(" ");
-                            }
-                            break;
-                        case 'c':
-                            if (c[h, j] == 1)
-                            {
-                                Console.SetCursorPosition(x + xxx, y);
-                                Console.Write(" ");
-                            }
-                            break;
-                        case 'd':
-                            if (d[h, j] == 1)
-                            {
-                                Console.SetCursorPosition(x + xxx, y);
-                                Console.Write(" ");
-                            }
-                            break;
-                        case 'e':
-                            if (e[h, j] == 1)
-                            {
-                                Console.SetCursorPosition(x + xxx, y);
-                                Console.Write(" ");
-                            }
-                            break;
-                        case 'f':
-                            if (f[h, j] == 1)
-                            {
-                                Console.SetCursorPosition(x + xxx, y);
-                                Console.Write(" ");
-                            }
-                            break;
-                        case 'g':
-                            if (g[h, j] == 1)
-                            {
-                                Console.SetCursorPosition(x + xxx, y);
-                                Console.Write(" ");
-                            }
-                            break;
-                        case 'h':
-                            if (hh[h, j] == 1)
-                            {
-                                Console.SetCursorPosition(x + xxx, y);
-                                Console.Write(" ");
-                            }
-                            break;
-                        case 'i':
-                            if (i[h, j] == 1)
-                            {
-                                Console.SetCursorPosition(x + xxx, y);
-                                Console.Write(" ");
-                            }
-                            break;
-                        case 'j':
-                            if (jj[h, j] == 1)
-                            {
-                                Console.SetCursorPosition(x + xxx, y);
-                                Console.Write(" ");
-                            }
-                            break;
-                        case 'k':
-                            if (k[h, j] == 1)
-                            {
-                                Console.SetCursorPosition(x + xxx, y);
-                                Console.Write(" ");
-                            }
-                            break;
-                        case 'l':
-                            if (l[h, j] == 1)
-                            {
-                                Console.SetCursorPosition(x + xxx, y);
-                                Console.Write(" ");
-                            }
-                            break;
-                        case 'm':
-                            if (m[h, j] == 1)
-                            {
-                                Console.SetCursorPosition(x + xxx, y);
-                                Console.Write(" ");
-                            }
-                            break;
-                        case 'n':
-                            if (n[h, j] == 1)
-                            {
-                                Console.SetCursorPosition(x + xxx, y);
-                                Console.Write(" ");
-                            }
-                            break;
-                        case 'o':
-                            if (o[h, j] == 1)
-                            {
-                                Console.SetCursorPosition(x + xxx, y);
-                                Console.Write(" ");
-                            }
-                            break;
-                        case 'p':
-                            if (p[h, j] == 1)
-                            {
-                                Console.SetCursorPosition(x + xxx, y);
-                                Console.Write(" ");
-                            }
-                            break;
-                        case 'q':
-                            if (q[h, j] == 1)
-                            {
-                                Console.SetCursorPosition(x + xxx, y);
-                                Console.Write(" ");
-                            }
-                            break;
-                        case 'r':
-                            if (r[h, j] == 1)
-                            {
-                                Console.SetCursorPosition(x + xxx, y);
-                                Console.Write(" ");
-                            }
-                            break;
-                        case 's':
-                            if (s[h, j] == 1)
-                            {
-                                Console.SetCursorPosition(x + xxx, y);
-                                Console.Write(" ");
-                            }
-                            break;
-                        case 't':
-                            if (t[h, j] == 1)
-                            {
-                                Console.SetCursorPosition(x + xxx, y);
-                                Console.Write(" ");
-                            }
-                            break;
-                        case 'u':
-                            if (u[h, j] == 1)
-                            {
-                                Console.SetCursorPosition(x + xxx, y);
-                                Console.Write(" ");
-                            }
-                            break;
-                        case 'v':
-                            if (v[h, j] == 1)
-                            {
-                                Console.SetCursorPosition(x + xxx, y);
-                                Console.Write(" ");
-                            }
-                            break;
-                        case 'w':
-                            if (w[h, j] == 1)
-                            {
-                                Console.SetCursorPosition(x + xxx, y);
-                                Console.Write(" ");
-                            }
-                            break;
-                        case 'x':
-                            if (xx[h, j] == 1)
-                            {
-                                Console.SetCursorPosition(x + xxx, y);
-                                Console.Write(" ");
-                            }
-                            break;
-                        case 'y':
-                            if (yy[h, j] == 1)
-                            {
-                                Console.SetCursorPosition(x + xxx, y);
-                                Console.Write(" ");
-                            }
-                            break;
-                        case 'z':
-                            if (z[h, j] == 1)
-                            {
-                                Console.SetCursorPosition(x + xxx, y);
-                                Console.Write(" ");
-                            }
-                            break;
+                        Console.SetCursorPosition(xxx, y);
+                        Console.Write(" ");
                     }
                 }
             }
