@@ -435,10 +435,14 @@ namespace Retro_Racer
                            {0, 1, 0, 0, 0},
                            {0, 1, 1, 1, 0}  };
 
+        public static Dictionary<char, int[,]> Letters = new Dictionary<char, int[,]>
+        {
+            {'a', a},{'b', b},{'c', c},{'d', d},{'e', e},{'f', f},{'g', g},{'h', hh},{'i', i},{'j', jj},{'k', k},{'l', l},{'m', m},{'n', n},{'o', o},{'p', p},{'q', q},{'r', r},{'s', s},{'t', t},{'u', u},{'v', v},{'w', w},{'x', xx},{'y', yy},{'z', z}
+        };
         public static void print(int x, int y, string text)
         {
             var length = text.Length;
-            // for (int Letter = 0; Letter < length; Letter++)
+            // for (int Letter = 0; Letter < length; Letter++) 
             for (var i = 0; i < length; i++)
             {
                 var Cur = text[i];
