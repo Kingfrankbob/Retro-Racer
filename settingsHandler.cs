@@ -10,6 +10,8 @@ namespace Retro_Racer
         private int _speed;
         private string _trackSelection = "";
 
+        private (bool, bool, bool) _PhighLight = (false, false, false);
+
         private string[,] previousShow = new string[51, 151];
 
 
@@ -72,18 +74,26 @@ namespace Retro_Racer
 
         public void showSelect(int choice)
         {
-            string highLight = ("false", "false", "false");
+            Console.BackgroundColor = ConsoleColor.Green;
+            Console.Clear();
+            var highLight = (false, false, false);
             switch (choice)
             {
-                case 0: { highLight.Item1 = true; highLight.Item2 = "false"; highLight.Item3 = "false"; } break;
-                case 1: { highLight.Item1 = "false"; highLight.Item2 = true; highLight.Item3 = "false"; } break;
-                case 2: { highLight.Item1 = "false"; highLight.Item2 = "false"; highLight.Item3 = true; } break;
+                case 0: { highLight.Item1 = true; highLight.Item2 = false; highLight.Item3 = false; } break;
+                case 1: { highLight.Item1 = false; highLight.Item2 = true; highLight.Item3 = false; } break;
+                case 2: { highLight.Item1 = false; highLight.Item2 = false; highLight.Item3 = true; } break;
             }
 
-            if (highLight.Item1) { Font.printHighlight(2, 2, "Track Selection"); Font.print(2, 16, "Speed Selection"); Font.print(2, 30, "Start Game"); }
-            else if (highLight.Item2) { Font.print(2, 2, "Track Selection"); Font.printHighlight(2, 16, "Speed Selection"); Font.print(2, 30, "Start Game"); }
-            else if (highLight.Item3) { Font.print(2, 2, "Track Selection"); Font.print(2, 16, "Speed Selection"); Font.printHighlight(2, 30, "Start Game"); }
-            else { System.Console.WriteLine("Error, should not make it here.../nPlease stop messing with the code :rofl: :lmao:\nError -> SystemInvalidBoolOperator\nCannot recognize \"Broken\" as a value."); }
+            if (highLight != _PhighLight)
+            {
+
+                if (highLight.Item1) { Font.printHighlight(2, 2, "Track Selection"); Font.print(2, 16, "Speed Selection"); Font.print(2, 30, "Start Game"); }
+                else if (highLight.Item2) { Font.print(2, 2, "Track Selection"); Font.printHighlight(2, 16, "Speed Selection"); Font.print(2, 30, "Start Game"); }
+                else if (highLight.Item3) { Font.print(2, 2, "Track Selection"); Font.print(2, 16, "Speed Selection"); Font.printHighlight(2, 30, "Start Game"); }
+                else { System.Console.WriteLine("Error, should not make it here.../nPlease stop messing with the code :rofl: :lmao:\nError -> SystemInvalidBoolOperator\nCannot recognize \"Broken\" as a value."); }
+                // return highLight;
+            }
+            _PhighLight = highLight;
         }
 
         public void handleTracks()

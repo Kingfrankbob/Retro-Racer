@@ -30,7 +30,7 @@ namespace Retro_Racer
 
             // var selection = Title();
 
-            // var selection = 69;
+            var selection = 69;
 
             // Font.print(0, 0, "Hello World");
             // Font.printHighlight(0, 8, "Hello World");
