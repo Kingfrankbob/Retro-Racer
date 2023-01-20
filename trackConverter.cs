@@ -91,10 +91,27 @@ Would you like to set custom, or use pre-programmed?
                 Console.WriteLine("Please, no time to waste, rerun the whole thing again... ERROR");
                 convertTrack();
             }
+            System.Console.WriteLine("Would you like to delete all the files in the input folder? It is highly recomended, that way no errors are thrown if converted again... (y / n <- Default)");
+            var delete = Console.ReadLine() ?? "n";
+            System.Console.WriteLine("Last Question, would you like these tracks added to the game? (saying no will write them to the output.cs file, also defaults to n. Be sure that no other current tracks have the same name as the ones you are currently converting.) (y/n)");
+            var add = Console.ReadLine() ?? "n";
+            var outputcs = false;
 
-            StreamWriter sw = new StreamWriter("output.cs");
+            StreamWriter sw = null;
+            List<string>? prevText = null;
 
-            sw.WriteLine("namespace Retro_Racer\n{\n    class importedMaps\n    {\n");
+            if (add == "Y" || add == "y")
+            {
+                prevText = new List<string>((from line in File.ReadAllLines(pathToCurrent + "\\trackRefrence.cs") where !string.IsNullOrWhiteSpace(line) select line).ToList());
+                sw = new StreamWriter(pathToCurrent + "\\trackRefrence.cs", false);
+                outputcs = false;
+                prevText.RemoveAt(prevText.Count - 1);
+                prevText.RemoveAt(prevText.Count - 1);
+                foreach (var line in prevText) sw.WriteLine(line);
+            }
+            else { sw = new StreamWriter("output.cs"); outputcs = true; }
+
+            if (outputcs) sw.WriteLine("namespace Retro_Racer\n{\n    class importedMaps\n    {\n");
 
             foreach (var file in fileInfo)
             {
@@ -190,6 +207,7 @@ Would you like to set custom, or use pre-programmed?
                 sw.Write("};\n");
                 sw.WriteLine();
                 fileCounter++;
+                if (delete == "Y" || delete == "y") file.Delete();
             }
             sw.WriteLine(@"   }
 }");

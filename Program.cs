@@ -20,30 +20,31 @@ namespace Retro_Racer
             else System.Console.WriteLine(RuntimeInformation.OSDescription);
 
 
-            // Console.WriteLine("REMEMBER, to exit press ctrl + c keys at the same time!!!");
+            Console.WriteLine("REMEMBER, to exit press ctrl + c keys at the same time!!!");
             // Console.WriteLine("CONVERSION DOES NOT WORK ON LINUX ATM!!!");
-            // Thread.Sleep(1000);
-            // titleRefrence.showCreds();
-            // Thread.Sleep(750);
-            // titleRefrence.showGameTitle();
-            // Thread.Sleep(750);
+            Thread.Sleep(1000);
+            titleRefrence.showCreds();
+            Thread.Sleep(750);
+            titleRefrence.showGameTitle();
+            Thread.Sleep(750);
 
-            // var selection = Title();
+            var selection = Title();
 
-            var selection = 69;
+            // var selection = 69;
+
 
             // Font.print(0, 0, "Hello World");
             // Font.printHighlight(0, 8, "Hello World");
 
-            // switch (selection)
-            // {
-            //     case 1:
-            setGame();
-            //         break;
-            //     case 2:
-            //         trackConverter.convertTrack();
-            //         break;
-            // }
+            switch (selection)
+            {
+                case 1:
+                    setGame();
+                    break;
+                case 2:
+                    trackConverter.convertTrack();
+                    break;
+            }
 
             Console.BackgroundColor = ConsoleColor.Black;
             Console.WriteLine("Don't know why your here? GLHF {0}", selection);

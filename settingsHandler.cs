@@ -74,8 +74,6 @@ namespace Retro_Racer
 
         public void showSelect(int choice)
         {
-            Console.BackgroundColor = ConsoleColor.Green;
-            Console.Clear();
             var highLight = (false, false, false);
             switch (choice)
             {
@@ -86,7 +84,8 @@ namespace Retro_Racer
 
             if (highLight != _PhighLight)
             {
-
+                Console.BackgroundColor = ConsoleColor.Green;
+                Console.Clear();
                 if (highLight.Item1) { Font.printHighlight(2, 2, "Track Selection"); Font.print(2, 16, "Speed Selection"); Font.print(2, 30, "Start Game"); }
                 else if (highLight.Item2) { Font.print(2, 2, "Track Selection"); Font.printHighlight(2, 16, "Speed Selection"); Font.print(2, 30, "Start Game"); }
                 else if (highLight.Item3) { Font.print(2, 2, "Track Selection"); Font.print(2, 16, "Speed Selection"); Font.printHighlight(2, 30, "Start Game"); }
@@ -98,7 +97,39 @@ namespace Retro_Racer
 
         public void handleTracks()
         {
+            var trackReference = new trackReference();
+            var fields = trackReference.GetType().GetFields().Select(f => f.Name).ToList();
+            var currentSelection = 0;
 
+            while (true)
+            {
+                for (int i = 0; i < fields.Count; i++)
+                {
+                    var name = fields[i];
+                    if (!name.Contains("Start") && currentSelection != i) { Console.BackgroundColor = ConsoleColor.Black; Console.ForegroundColor = ConsoleColor.White; System.Console.WriteLine(name); }
+                    else if (!name.Contains("Start") && currentSelection == i) { Console.BackgroundColor = ConsoleColor.White; Console.ForegroundColor = ConsoleColor.Black; System.Console.WriteLine(name); }
+                }
+                if (Console.KeyAvailable)
+                {
+                    switch (Console.ReadKey().Key)
+                    {
+                        case ConsoleKey.UpArrow:
+                            if (currentSelection > 0) currentSelection--;
+                            else currentSelection = fields.Count - 1;
+                            break;
+                        case ConsoleKey.DownArrow:
+                            if (currentSelection < fields.Count - 1) currentSelection++;
+                            else currentSelection = 0;
+                            break;
+                        case ConsoleKey.Enter:
+                            _trackSelection = fields[currentSelection];
+                            handleSettings();
+                            break;
+                    }
+                }
+
+
+            }
         }
 
         public string TrackSelection

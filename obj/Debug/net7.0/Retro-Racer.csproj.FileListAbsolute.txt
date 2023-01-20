@@ -58,21 +58,6 @@ D:/Code Related/Repos/Retro-Racer/obj/Debug/net7.0/refint/Retro-Racer.dll
 D:/Code Related/Repos/Retro-Racer/obj/Debug/net7.0/Retro-Racer.pdb
 D:/Code Related/Repos/Retro-Racer/obj/Debug/net7.0/Retro-Racer.genruntimeconfig.cache
 D:/Code Related/Repos/Retro-Racer/obj/Debug/net7.0/ref/Retro-Racer.dll
-C:/Users/ajwpc/Github/Retro-Racer/bin/Debug/net7.0/Retro-Racer.exe
-C:/Users/ajwpc/Github/Retro-Racer/bin/Debug/net7.0/Retro-Racer.deps.json
-C:/Users/ajwpc/Github/Retro-Racer/bin/Debug/net7.0/Retro-Racer.runtimeconfig.json
-C:/Users/ajwpc/Github/Retro-Racer/bin/Debug/net7.0/Retro-Racer.dll
-C:/Users/ajwpc/Github/Retro-Racer/bin/Debug/net7.0/Retro-Racer.pdb
-C:/Users/ajwpc/Github/Retro-Racer/obj/Debug/net7.0/Retro-Racer.csproj.AssemblyReference.cache
-C:/Users/ajwpc/Github/Retro-Racer/obj/Debug/net7.0/Retro-Racer.GeneratedMSBuildEditorConfig.editorconfig
-C:/Users/ajwpc/Github/Retro-Racer/obj/Debug/net7.0/Retro-Racer.AssemblyInfoInputs.cache
-C:/Users/ajwpc/Github/Retro-Racer/obj/Debug/net7.0/Retro-Racer.AssemblyInfo.cs
-C:/Users/ajwpc/Github/Retro-Racer/obj/Debug/net7.0/Retro-Racer.csproj.CoreCompileInputs.cache
-C:/Users/ajwpc/Github/Retro-Racer/obj/Debug/net7.0/Retro-Racer.dll
-C:/Users/ajwpc/Github/Retro-Racer/obj/Debug/net7.0/refint/Retro-Racer.dll
-C:/Users/ajwpc/Github/Retro-Racer/obj/Debug/net7.0/Retro-Racer.pdb
-C:/Users/ajwpc/Github/Retro-Racer/obj/Debug/net7.0/Retro-Racer.genruntimeconfig.cache
-C:/Users/ajwpc/Github/Retro-Racer/obj/Debug/net7.0/ref/Retro-Racer.dll
 E:/Code Related/Repos/Retro-Racer/obj/Debug/net7.0/Retro-Racer.csproj.AssemblyReference.cache
 E:/Code Related/Repos/Retro-Racer/obj/Debug/net7.0/Retro-Racer.GeneratedMSBuildEditorConfig.editorconfig
 E:/Code Related/Repos/Retro-Racer/obj/Debug/net7.0/Retro-Racer.AssemblyInfoInputs.cache
@@ -88,3 +73,18 @@ E:/Code Related/Repos/Retro-Racer/bin/Debug/net7.0/Retro-Racer.dll
 E:/Code Related/Repos/Retro-Racer/bin/Debug/net7.0/Retro-Racer.pdb
 E:/Code Related/Repos/Retro-Racer/obj/Debug/net7.0/Retro-Racer.genruntimeconfig.cache
 E:/Code Related/Repos/Retro-Racer/obj/Debug/net7.0/ref/Retro-Racer.dll
+C:\Users\ajwpc\Github\Retro-Racer\bin\Debug\net7.0\Retro-Racer.exe
+C:\Users\ajwpc\Github\Retro-Racer\bin\Debug\net7.0\Retro-Racer.deps.json
+C:\Users\ajwpc\Github\Retro-Racer\bin\Debug\net7.0\Retro-Racer.runtimeconfig.json
+C:\Users\ajwpc\Github\Retro-Racer\bin\Debug\net7.0\Retro-Racer.dll
+C:\Users\ajwpc\Github\Retro-Racer\bin\Debug\net7.0\Retro-Racer.pdb
+C:\Users\ajwpc\Github\Retro-Racer\obj\Debug\net7.0\Retro-Racer.csproj.AssemblyReference.cache
+C:\Users\ajwpc\Github\Retro-Racer\obj\Debug\net7.0\Retro-Racer.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ajwpc\Github\Retro-Racer\obj\Debug\net7.0\Retro-Racer.AssemblyInfoInputs.cache
+C:\Users\ajwpc\Github\Retro-Racer\obj\Debug\net7.0\Retro-Racer.AssemblyInfo.cs
+C:\Users\ajwpc\Github\Retro-Racer\obj\Debug\net7.0\Retro-Racer.csproj.CoreCompileInputs.cache
+C:\Users\ajwpc\Github\Retro-Racer\obj\Debug\net7.0\Retro-Racer.dll
+C:\Users\ajwpc\Github\Retro-Racer\obj\Debug\net7.0\refint\Retro-Racer.dll
+C:\Users\ajwpc\Github\Retro-Racer\obj\Debug\net7.0\Retro-Racer.pdb
+C:\Users\ajwpc\Github\Retro-Racer\obj\Debug\net7.0\Retro-Racer.genruntimeconfig.cache
+C:\Users\ajwpc\Github\Retro-Racer\obj\Debug\net7.0\ref\Retro-Racer.dll
