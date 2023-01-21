@@ -12,6 +12,8 @@ namespace Retro_Racer
 
         private (bool, bool, bool) _PhighLight = (false, false, false);
 
+        private int selecT = 0;
+
         private string[,] previousShow = new string[51, 151];
 
 
@@ -99,16 +101,26 @@ namespace Retro_Racer
         {
             var trackReference = new trackReference();
             var fields = trackReference.GetType().GetFields().Select(f => f.Name).ToList();
-            var currentSelection = 0;
-
+            var currentSelection = 1;
             while (true)
             {
-                for (int i = 0; i < fields.Count; i++)
+                if (currentSelection != selecT)
                 {
-                    var name = fields[i];
-                    if (!name.Contains("Start") && currentSelection != i) { Console.BackgroundColor = ConsoleColor.Black; Console.ForegroundColor = ConsoleColor.White; System.Console.WriteLine(name); }
-                    else if (!name.Contains("Start") && currentSelection == i) { Console.BackgroundColor = ConsoleColor.White; Console.ForegroundColor = ConsoleColor.Black; System.Console.WriteLine(name); }
+                    Console.BackgroundColor = ConsoleColor.Black;
+                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.Clear();
+                    System.Console.WriteLine("Please Select a Track, this excludes anything with \"Start\" in the name:");
+                    System.Console.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+                    for (int i = 0; i < fields.Count; i++)
+                    {
+                        var name = fields[i];
+                        if (!name.Contains("Start") && currentSelection != i) { Console.BackgroundColor = ConsoleColor.Black; Console.ForegroundColor = ConsoleColor.White; System.Console.WriteLine(name); }
+                        else if (!name.Contains("Start") && currentSelection == i) { Console.BackgroundColor = ConsoleColor.White; Console.ForegroundColor = ConsoleColor.Black; System.Console.WriteLine(name); }
+                        else fields.Remove(name);
+                    }
+                    selecT = currentSelection;
                 }
+
                 if (Console.KeyAvailable)
                 {
                     switch (Console.ReadKey().Key)
@@ -124,9 +136,10 @@ namespace Retro_Racer
                         case ConsoleKey.Enter:
                             _trackSelection = fields[currentSelection];
                             handleSettings();
-                            break;
+                            return;
                     }
                 }
+
 
 
             }
