@@ -134,7 +134,7 @@ namespace Retro_Racer
                 Console.BackgroundColor = ConsoleColor.Black;
                 Console.Write(" Track X: " + (int)trackX + " Track Y: " + (int)trackY + " Direction: " + curRacer.Direction + " Speed: " + curRacer.Speed);
 
-                trackHandlerC.drawTrackSection(0, 0, (int)trackX, (int)trackY);
+                trackHandlerC.drawTrackSection(0, 0, (int)trackX, (int)trackY, curRacer);
 
                 // curRacer.checkCrash(trackHandlerC);
                 curRacer.draw();

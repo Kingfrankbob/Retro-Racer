@@ -38,7 +38,7 @@ namespace Retro_Racer
 
         }
 
-        public void drawTrackSection(int x, int y, int midx, int midy)
+        public void drawTrackSection(int x, int y, int midx, int midy, Racer racer)
         {
 
             var startx = midx - _cMidX;
@@ -109,7 +109,7 @@ namespace Retro_Racer
                     System.Console.WriteLine(' ');
                     if (currentTrack[crashCounterY, crashCounterX] == "Wall")
                     {
-                        Racer.Crash();
+                        racer.Crash();
                     }
                     crashCounterX++;
                 }

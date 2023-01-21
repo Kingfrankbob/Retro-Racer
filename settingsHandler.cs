@@ -135,6 +135,7 @@ namespace Retro_Racer
                             break;
                         case ConsoleKey.Enter:
                             _trackSelection = fields[currentSelection];
+                            _PhighLight = (false, false, false);
                             handleSettings();
                             return;
                     }
