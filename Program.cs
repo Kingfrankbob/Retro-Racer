@@ -19,6 +19,10 @@ namespace Retro_Racer
             }
             else System.Console.WriteLine(RuntimeInformation.OSDescription);
 
+            var trackHandlerC = new trackHandler("Track1", Console.BufferHeight, Console.BufferWidth);
+
+
+            // var trackHandlerC = new trackHandler("Track1", Console.BufferHeight, Console.BufferWidth);
 
             Console.WriteLine("REMEMBER, to exit press ctrl + c keys at the same time!!!");
             // Console.WriteLine("CONVERSION DOES NOT WORK ON LINUX ATM!!!");
@@ -30,7 +34,7 @@ namespace Retro_Racer
 
             var selection = Title();
 
-            // var selection = 69;
+            // // var selection = 69;
 
 
             // Font.print(0, 0, "Hello World");
@@ -101,7 +105,7 @@ namespace Retro_Racer
         public static void startGame(string Track, double accel, int maxSpeed)
         {
 
-            var trackHandlerC = new trackHandler(trackReference.Track1, Console.BufferHeight, Console.BufferWidth);
+            var trackHandlerC = new trackHandler(Track, Console.BufferHeight, Console.BufferWidth);
             var curRacer = new Racer(trackHandlerC.StartX * 100, trackHandlerC.StartY * 100, accel, maxSpeed); // Middle of screen
 
             while (true)
@@ -137,7 +141,7 @@ namespace Retro_Racer
                 trackHandlerC.drawTrackSection(0, 0, (int)trackX, (int)trackY, curRacer);
 
                 // curRacer.checkCrash(trackHandlerC);
-                curRacer.draw();
+                curRacer.draw(trackHandlerC);
 
 
             }

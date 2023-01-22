@@ -90,7 +90,7 @@ namespace Retro_Racer
      {0, 0, 1, 0, 0, 0, 0}};
 
 
-        public static void showSprite(int x, int y, int spriteNumber, (int x, int y) curTack)
+        public static void showSprite(int x, int y, int spriteNumber, (int x, int y) curTack, trackHandler TrackHandlerC)
         {
             var one = carUD; // Start UpDown
             var two = car25LDRUB45;
@@ -246,7 +246,7 @@ namespace Retro_Racer
                         }
                         else
                         {
-                            switch (trackReference.Track1[checkedy + i, checkedx + j])
+                            switch (TrackHandlerC.currentTrack[checkedy + i, checkedx + j])
                             {
                                 case "Track":
                                     Console.BackgroundColor = ConsoleColor.DarkYellow;

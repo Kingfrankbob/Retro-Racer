@@ -1,8 +1,10 @@
 namespace Retro_Racer
 {
-    class trackHandler
+    public class trackHandler
     {
         public string[,] currentTrack = new string[,] { };
+        private int[] _startX = new int[] { };
+        private int[] _startY = new int[] { };
         public string[,] previouShownTrack = trackReference.bufferStart;
         private int _height;
         private int _width;
@@ -12,27 +14,41 @@ namespace Retro_Racer
         private int _cMidY;
         private int _sMidX;
         private int _sMidY;
-        public trackHandler(string[,] track, int consoleHeight, int consoleWidth)
+        public trackHandler(string track, int consoleHeight, int consoleWidth)
         {
-            currentTrack = track;
+            var trackReference = new trackReference();
+            try
+            {
+                var TrackS = trackReference.GetType().GetFields().ToList().Where(f => (f.Name == track)).ToList();
+                foreach (var prop in TrackS) currentTrack = prop.GetValue(trackReference) as string[,] ?? new string[,] { };
+                // System.Console.WriteLine(prop.Name);
+                var TrackSX = trackReference.GetType().GetFields().ToList().Where(f => (f.Name == (track + "StartX")));
+                foreach (var prop in TrackSX) _startX = prop.GetValue(trackReference) as int[] ?? new int[] { };
+
+                var TrackSY = trackReference.GetType().GetFields().ToList().Where(f => (f.Name == (track + "StartY")));
+                foreach (var prop in TrackSY) _startY = prop.GetValue(trackReference) as int[] ?? new int[] { };
+            }
+            catch (Exception e)
+            {
+                System.Console.WriteLine(e.Message + " " + e.StackTrace + "Please dont mess around with the code, it will break things.");
+            }
+            // foreach (var line in currentTrack) System.Console.WriteLine(line);
+
             _height = consoleHeight;
             _width = consoleWidth;
-            _trackHeight = track.GetLength(0);
-            _trackWidth = track.GetLength(1);
+            _trackHeight = currentTrack.GetLength(0);
+            _trackWidth = currentTrack.GetLength(1);
             _cMidX = (consoleWidth / 2);
             _cMidY = (consoleHeight / 2);
+
             var itemX = 0L;
-            foreach (var item in trackReference.Track1StartX)
-            {
-                itemX += item;
-            }
+
+            foreach (var item in trackReference.Track1StartX) itemX += item;
             itemX /= trackReference.Track1StartX.Length;
             _sMidX = (int)itemX;
             var itemY = 0L;
-            foreach (var item in trackReference.Track1StartY)
-            {
-                itemY += item;
-            }
+
+            foreach (var item in trackReference.Track1StartY) itemY += item;
             itemY /= trackReference.Track1StartX.Length;
             _sMidY = (int)itemY;
 
@@ -104,9 +120,9 @@ namespace Retro_Racer
             {
                 for (int j = 0; j < 7; j++)
                 {
-                    Console.BackgroundColor = ConsoleColor.Black;
-                    Console.SetCursorPosition(76 + j, 25 + i);
-                    System.Console.WriteLine(' ');
+                    // Console.BackgroundColor = ConsoleColor.Black;
+                    // Console.SetCursorPosition(76 + j, 25 + i);
+                    // System.Console.WriteLine(' ');
                     if (currentTrack[crashCounterY, crashCounterX] == "Wall")
                     {
                         racer.Crash();

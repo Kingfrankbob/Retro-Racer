@@ -7,7 +7,7 @@ namespace Retro_Racer
 {
     public class settingsHandler
     {
-        private int _speed;
+        private int _speed = -99;
         private string _trackSelection = "";
 
         private (bool, bool, bool) _PhighLight = (false, false, false);
@@ -63,6 +63,8 @@ namespace Retro_Racer
                                     break;
 
                                 case 2:
+                                    if (String.IsNullOrWhiteSpace(_trackSelection)) { Console.WriteLine("Please select a track first"); handleSettings(); }
+                                    if (_speed == -99) { Console.WriteLine("Please select a speed first"); handleSettings(); }
                                     Program.startGame(_trackSelection, Accel, MaxSpeed);
                                     break;
                             }
@@ -118,8 +120,10 @@ namespace Retro_Racer
                         else if (!name.Contains("Start") && currentSelection == i) { Console.BackgroundColor = ConsoleColor.White; Console.ForegroundColor = ConsoleColor.Black; System.Console.WriteLine(name); }
                         else fields.Remove(name);
                     }
-                    selecT = currentSelection;
+                    // selecT = currentSelection;
                 }
+                selecT = currentSelection;
+
 
                 if (Console.KeyAvailable)
                 {

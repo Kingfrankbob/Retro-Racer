@@ -1,6 +1,6 @@
 namespace Retro_Racer
 {
-    class Racer
+    public class Racer
     {
         private double _x;
         private double _y;
@@ -55,9 +55,9 @@ namespace Retro_Racer
             if (_speed > (_maxSpeed * -1)) _speed -= _acceleration;
         }
 
-        public void draw()
+        public void draw(trackHandler TrackHandlerC)
         {
-            RacerSprites.showSprite(76, 25, _direction, ((int)_x, (int)_y));
+            RacerSprites.showSprite(76, 25, _direction, ((int)_x, (int)_y), TrackHandlerC);
         }
 
         public double X
