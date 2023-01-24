@@ -19,18 +19,15 @@ namespace Retro_Racer
             }
             else System.Console.WriteLine(RuntimeInformation.OSDescription);
 
-            var trackHandlerC = new trackHandler("Track1", Console.BufferHeight, Console.BufferWidth);
-
-
             // var trackHandlerC = new trackHandler("Track1", Console.BufferHeight, Console.BufferWidth);
 
-            Console.WriteLine("REMEMBER, to exit press ctrl + c keys at the same time!!!");
+            // Console.WriteLine("REMEMBER, to exit press ctrl + c keys at the same time!!!");
             // Console.WriteLine("CONVERSION DOES NOT WORK ON LINUX ATM!!!");
-            Thread.Sleep(1000);
-            titleRefrence.showCreds();
-            Thread.Sleep(750);
-            titleRefrence.showGameTitle();
-            Thread.Sleep(750);
+            // Thread.Sleep(1000);
+            // titleRefrence.showCreds();
+            // Thread.Sleep(750);
+            // titleRefrence.showGameTitle();
+            // Thread.Sleep(750);
 
             var selection = Title();
 

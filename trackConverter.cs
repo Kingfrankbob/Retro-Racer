@@ -101,15 +101,21 @@ Would you like to set custom, or use pre-programmed?
                 prevText.RemoveAt(prevText.Count - 1);
                 foreach (var line in prevText) sw.WriteLine(line);
             }
-            else { sw = new StreamWriter("output.cs"); outputcs = true; }
+            else { sw = new StreamWriter(pathToCurrent + "\\input\\output.cs"); outputcs = true; System.Console.WriteLine("Output.cs Chosen ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~`"); }
 
             if (outputcs) sw.WriteLine("namespace Retro_Racer\n{\n    class importedMaps\n    {\n");
+
+            System.Console.WriteLine("Converting Tracks... " + fileInfo.Length + " Files Found");
+
+            Environment.CurrentDirectory = pathToCurrent + targetPath;
 
             foreach (var file in fileInfo)
             {
                 var name = file.Name;
+                System.Console.WriteLine("Converting: " + name);
+                var lsatExtension = name.Split('.')[1].Length;
                 var nextName = name.Replace('.', ' ').Replace('(', ' ').Replace(')', ' ').Replace('-', ' ').Replace('_', ' ');
-                var cleanedName = String.Concat(nextName.Where(c => !Char.IsWhiteSpace(c)));
+                var cleanedName = String.Concat(nextName.Where(c => !Char.IsWhiteSpace(c))).Remove(nextName.Length - lsatExtension);
                 if (ignore.Contains(name.Split('.')[1]) || name == "output.cs") continue;
                 var startX = new List<int>();
                 var startY = new List<int>();

@@ -9,7 +9,7 @@ namespace Retro_Racer
         // private int _prevDir;
         private int _maxSpeed { get; set; }
         private double _acceleration;
-        private int _health = 0;
+        // private int _health = 0;
 
 
         public Racer(int startX, int startY)
@@ -20,7 +20,7 @@ namespace Retro_Racer
             _direction = 1;
             _maxSpeed = 50;
             _acceleration = 1.53;
-            _health = 4;
+            // _health = 4;
         }
 
         public Racer(int startX, int startY, double Accel, int MXspeed)
@@ -157,17 +157,8 @@ namespace Retro_Racer
         public void Crash()
         {
             Console.BackgroundColor = ConsoleColor.DarkGray;
-            Console.WriteLine(" \n \n \nCRASH!");
-            _health--;
-            if (_health == 0 || _health < 0)
-            {
-                Console.WriteLine(" \n \n \nGAME OVER!");
-                Environment.Exit(0);
-            }
-            else
-            {
-                Console.WriteLine(" \n \n \nYou have " + _health + " lives left!");
-            }
+            gameOverHandler.GameOver();
+
             // Environment.Exit(0);
         }
 
