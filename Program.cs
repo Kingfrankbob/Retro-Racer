@@ -1,6 +1,7 @@
 ﻿using System.IO;
 using System.Threading;
 using System.Runtime.InteropServices;
+using System.Drawing;
 
 namespace Retro_Racer
 {
@@ -14,8 +15,14 @@ namespace Retro_Racer
             Console.Clear();
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
             {
-                Console.SetWindowSize(151, 51);
-                Console.SetBufferSize(151, 51);  // 76 is mid x point, 25 is mid y point
+                try
+                {
+                    Console.SetWindowSize(151, 51);
+                    Console.SetBufferSize(151, 51);  // 76 is mid x point, 25 is mid y point
+                }
+                catch (System.ArgumentOutOfRangeException)
+                {
+                }
             }
             else System.Console.WriteLine(RuntimeInformation.OSDescription);
 
@@ -29,9 +36,9 @@ namespace Retro_Racer
             // titleRefrence.showGameTitle();
             // Thread.Sleep(750);
 
-            var selection = Title();
+            // var selection = Title();
 
-            // // var selection = 69;
+            var selection = 1;
 
 
             // Font.print(0, 0, "Hello World");

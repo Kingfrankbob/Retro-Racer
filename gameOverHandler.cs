@@ -9,11 +9,11 @@ namespace Retro_Racer
     {
         public static void GameOver()
         {
-            for (int f = 0; f < 4; f++)
+            for (int f = 0; f < 1; f++)
             {
-                for (int i = 0; i < 150; i++)
+                for (int i = 0; i < 50; i++)
                 {
-                    for (int j = 0; j < 51; j++)
+                    for (int j = 0; j < 151; j++)
                     {
                         Console.SetCursorPosition(j, i);
                         switch (gameOverReference.GameOver1reg[i, j])
@@ -32,9 +32,9 @@ namespace Retro_Racer
                     }
                 }
                 System.Threading.Thread.Sleep(100);
-                for (int i = 0; i < 150; i++)
+                for (int i = 0; i < 50; i++)
                 {
-                    for (int j = 0; j < 51; j++)
+                    for (int j = 0; j < 151; j++)
                     {
                         Console.SetCursorPosition(j, i);
                         switch (gameOverReference.GameOver2Highlight[i, j])
@@ -78,9 +78,9 @@ namespace Retro_Racer
                     }
                 }
 
-                for (int i = 0; i < 150; i++)
+                for (int i = 0; i < 50; i++)
                 {
-                    for (int j = 0; j < 51; j++)
+                    for (int j = 0; j < 151; j++)
                     {
                         Console.SetCursorPosition(j, i);
                         switch (gameOverReference.GameOver1reg[i, j])
